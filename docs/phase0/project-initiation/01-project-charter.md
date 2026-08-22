@@ -1,12 +1,13 @@
-# MedRescue AI — Project Charter
-## Agentic Emergency Response Coordination Platform
+# ARIA — Project Charter
+## AI Rescue Assistance Emergency Response Platform
 
 ---
 
 ## 1. Project Title and Tagline
 
-**Project Name:** MedRescue AI  
-**Tagline:** *"From Emergency Call → AI Coordination → Human Approval → Faster Response"*  
+**Project Name:** ARIA (AI Rescue Assistance)  
+**Full Name:** ARIA — AI Rescue Assistance Emergency Response Platform  
+**Tagline:** *"ARIA — Your Emergency Response Assistant"*  
 **Version:** 1.0  
 **Date:** August 22, 2026  
 **Status:** Draft - Pending Approval
@@ -17,9 +18,9 @@
 
 Emergency response coordination is a complex, time-critical process involving multiple disconnected systems — hospitals, ambulances, blood banks, routes, and communication channels. Every second counts when responding to medical emergencies, yet valuable time is lost in manual coordination, phone calls, and resource discovery. Current systems lack real-time visibility, intelligent resource matching, and automated coordination capabilities.
 
-MedRescue AI addresses this critical gap by introducing an intelligent coordination layer powered by multi-agent AI systems. The platform receives emergency reports through multiple channels (text, voice, images, GPS), automatically assesses urgency using machine learning, activates specialized AI agents to discover and coordinate resources, generates optimal response plans, and presents them to human emergency coordinators for approval and dispatch. This human-in-the-loop approach ensures AI augments rather than replaces critical human judgment.
+ARIA addresses this critical gap by introducing an intelligent coordination layer powered by multi-agent AI systems. The platform receives emergency reports through multiple channels (text, voice, images, GPS), automatically assesses urgency using machine learning, activates specialized AI agents to discover and coordinate resources, generates optimal response plans, and presents them to human emergency coordinators for approval and dispatch. This human-in-the-loop approach ensures AI augments rather than replaces critical human judgment.
 
-Built on a modern tech stack (Python, FastAPI, LangGraph, PostgreSQL/PostGIS, Redis, React), MedRescue AI leverages 5 machine learning models for triage classification, hospital ranking, resource prediction, ETA estimation, and hotspot identification. The platform processes incidents in under 10 seconds, provides real-time updates via WebSockets, and scales to handle 100+ concurrent emergencies.
+Built on a modern tech stack (Python, FastAPI, LangGraph, PostgreSQL/PostGIS, Redis, React), ARIA leverages 5 machine learning models for triage classification, hospital ranking, resource prediction, ETA estimation, and hotspot identification. The platform processes incidents in under 10 seconds, provides real-time updates via WebSockets, and scales to handle 100+ concurrent emergencies.
 
 This 16-20 week project will be delivered by a cross-functional team of 8 specialists, structured in 6 agile sprints covering data collection, ML model development, backend/frontend implementation, integration, and deployment. The expected outcome is a production-ready platform that reduces emergency response coordination time by 40-60%, improves resource utilization by 30-40%, and ultimately saves lives through faster, smarter emergency response.
 

@@ -1,6 +1,8 @@
-# MedRescue AI — Use Case Documentation
+# ARIA — Use Case Documentation
 ## Comprehensive Use Case Analysis
 
+**Project:** ARIA (AI Rescue Assistance)  
+**Full Name:** ARIA — AI Rescue Assistance Emergency Response Platform  
 **Date:** August 22, 2026  
 **Version:** 1.0  
 **Status:** Draft
@@ -837,7 +839,7 @@ Ambulance crew receives digital dispatch order with incident details, patient in
 
 1. **Dispatcher submits incident** (UC-01):
    - Receives 911 call at 2:47 PM
-   - Opens MedRescue dashboard
+   - Opens ARIA dashboard
    - Enters: "Multi-vehicle accident, Highway 101 Mile 42, 3 victims, injuries unknown"
    - Uploads scene photo from first responder
    - Submits incident

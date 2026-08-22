@@ -1,10 +1,10 @@
-# MedRescue AI — Agentic Emergency Response Coordination Platform
+# ARIA — AI Rescue Assistance Emergency Response Platform
 
-> **"From Emergency Call → AI Coordination → Human Approval → Faster Response"**
+> **"ARIA — Your Emergency Response Assistant"**
 
 ## 🚀 Project Overview
 
-MedRescue AI is an intelligent emergency response coordination platform that uses multi-agent AI systems (LangGraph) to automate the complex process of coordinating hospitals, ambulances, blood banks, and routes during medical emergencies. The platform reduces coordination time by 60% (from 10+ minutes to under 2 minutes) while keeping human coordinators in control of final decisions.
+**ARIA (AI Rescue Assistance)** is an intelligent emergency response coordination platform that uses multi-agent AI systems (LangGraph) to automate the complex process of coordinating hospitals, ambulances, blood banks, and routes during medical emergencies. The platform reduces coordination time by 60% (from 10+ minutes to under 2 minutes) while keeping human coordinators in control of final decisions.
 
 **Status:** Phase 0 - Project Initiation (Week 1)  
 **Progress:** 15% Complete  
@@ -353,9 +353,9 @@ Phase 0 is currently focused on documentation. Development contributions will be
 
 ---
 
-## 🎉 Let's Build MedRescue AI!
+## 🎉 Let's Build ARIA!
 
-Every second saved in emergency response is a life potentially saved. Let's make a difference! 🚀
+**ARIA (AI Rescue Assistance)** — Every second saved in emergency response is a life potentially saved. Let's make a difference! 🚀
 
 ---
 

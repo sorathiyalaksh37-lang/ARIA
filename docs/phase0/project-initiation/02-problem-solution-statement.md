@@ -1,6 +1,8 @@
-# MedRescue AI — Problem & Solution Statement
+# ARIA — Problem & Solution Statement
 ## Transforming Emergency Response Through Intelligent Coordination
 
+**Project:** ARIA (AI Rescue Assistance)  
+**Full Name:** ARIA — AI Rescue Assistance Emergency Response Platform  
 **Date:** August 22, 2026  
 **Version:** 1.0  
 **Status:** Draft
@@ -43,7 +45,7 @@ Emergency medical response is a race against time where **every second matters**
 
 ---
 
-## 2. Current State Scenario: "Before MedRescue"
+## 2. Current State Scenario: "Before ARIA"
 
 ### Scenario: Multi-Vehicle Accident with Mass Casualties
 
@@ -103,13 +105,13 @@ Emergency medical response is a race against time where **every second matters**
 
 ---
 
-## 3. Future State Scenario: "After MedRescue"
+## 3. Future State Scenario: "After ARIA"
 
-### Same Scenario with MedRescue AI
+### Same Scenario with ARIA
 
 **11:47 AM** — Multiple vehicle collision on highway. 7 victims with varying injuries.
 
-**11:48 AM** — 911 dispatcher enters incident into MedRescue AI:
+**11:48 AM** — 911 dispatcher enters incident into ARIA:
 - Location (GPS: auto-captured)
 - Initial report: "Multi-vehicle accident, estimated 7 victims, injuries unknown"
 - Dispatcher voice recording: Auto-transcribed by Whisper API
@@ -237,24 +239,24 @@ TOTAL COORDINATION: 1 minute 15 seconds
 
 ## 4. Solution Description
 
-### MedRescue AI: Intelligent Emergency Coordination Layer
+### ARIA: Intelligent Emergency Coordination Layer
 
 **What It Does:**
 
-MedRescue AI acts as an **intelligent coordination layer** that sits between emergency intake and resource dispatch. It receives emergency reports, comprehends the situation using AI, activates specialized agents to discover and coordinate all required resources, generates an optimal response plan, and presents it to a human emergency coordinator for approval and dispatch.
+ARIA (AI Rescue Assistance) acts as an **intelligent coordination layer** that sits between emergency intake and resource dispatch. It receives emergency reports, comprehends the situation using AI, activates specialized agents to discover and coordinate all required resources, generates an optimal response plan, and presents it to a human emergency coordinator for approval and dispatch.
 
 **Core Value Proposition:**
 
 > **"We don't replace the emergency call. We coordinate everything that happens after it."**
 
-MedRescue AI augments human coordinators with AI-powered intelligence, automating the time-consuming, error-prone tasks of resource discovery, matching, and plan generation—while keeping humans in control of final dispatch decisions.
+ARIA augments human coordinators with AI-powered intelligence, automating the time-consuming, error-prone tasks of resource discovery, matching, and plan generation—while keeping humans in control of final dispatch decisions.
 
 ---
 
 ### Key Differentiators
 
 **1. Multi-Agent AI Architecture (LangGraph)**
-- Unlike single-model systems, MedRescue uses 9 specialized AI agents working in parallel
+- Unlike single-model systems, ARIA uses 9 specialized AI agents working in parallel
 - Each agent focuses on one domain: triage, hospitals, ambulances, blood, routes, communication, planning, monitoring
 - Agents collaborate through a state machine, passing information and building comprehensive response plans
 - Human-in-the-loop design: AI generates plans, humans approve/modify/reject
@@ -394,10 +396,10 @@ MedRescue AI augments human coordinators with AI-powered intelligence, automatin
 ## 6. Unique Selling Points (USPs)
 
 ### 1. **Only Multi-Agent AI System for Emergency Coordination**
-Unlike single-model or rule-based systems, MedRescue uses 9 specialized AI agents collaborating through LangGraph state machines. Each agent is an expert in its domain (triage, hospitals, ambulances, blood, routes), enabling sophisticated reasoning and parallel execution impossible with monolithic systems.
+Unlike single-model or rule-based systems, ARIA uses 9 specialized AI agents collaborating through LangGraph state machines. Each agent is an expert in its domain (triage, hospitals, ambulances, blood, routes), enabling sophisticated reasoning and parallel execution impossible with monolithic systems.
 
 ### 2. **Geospatial Intelligence at Scale**
-Leveraging PostGIS, MedRescue performs complex spatial queries (nearest neighbors, route optimization, hotspot detection) across 40,000+ resources in <50ms. Traditional systems use simple radius searches; MedRescue uses actual road networks, traffic patterns, and geographic barriers.
+Leveraging PostGIS, ARIA performs complex spatial queries (nearest neighbors, route optimization, hotspot detection) across 40,000+ resources in <50ms. Traditional systems use simple radius searches; ARIA uses actual road networks, traffic patterns, and geographic barriers.
 
 ### 3. **Multi-Modal AI Understanding**
 Accepts emergency reports as text, voice, images, or GPS—understanding context from dispatcher tone, visual scene assessment, and location hazards. GPT-4 Vision can identify vehicle count, fire hazards, or road blockages from scene photos automatically.
@@ -418,10 +420,10 @@ From incident submission to complete response plan generation in <10 seconds, in
 - Communication generation
 - Plan synthesis
 
-Traditional coordination: 10-30 minutes. **MedRescue: 10 seconds.**
+Traditional coordination: 10-30 minutes. **ARIA: 10 seconds.**
 
 ### 7. **Real-Time Adaptive Coordination**
-Plans aren't static. As ambulances report delays, hospitals update capacity, or new incidents arise, MedRescue automatically re-optimizes resource allocation, notifies affected parties, and presents updated plans to coordinators—dynamic coordination matching dynamic reality.
+Plans aren't static. As ambulances report delays, hospitals update capacity, or new incidents arise, ARIA automatically re-optimizes resource allocation, notifies affected parties, and presents updated plans to coordinators—dynamic coordination matching dynamic reality.
 
 ### 8. **Built for Scale: 100+ Concurrent Incidents**
 Architected for disaster scenarios: handles 100+ simultaneous incidents without performance degradation. Horizontal scaling via containerization, Redis pub/sub for real-time updates, database read replicas for query distribution.
@@ -515,9 +517,9 @@ Architected for disaster scenarios: handles 100+ simultaneous incidents without 
 
 ---
 
-## 8. Comparison Table: Without vs. With MedRescue
+## 8. Comparison Table: Without vs. With ARIA
 
-| Aspect | **Without MedRescue** (Current State) | **With MedRescue** (Future State) | **Improvement** |
+| Aspect | **Without ARIA** (Current State) | **With ARIA** (Future State) | **Improvement** |
 |--------|---------------------------------------|-----------------------------------|-----------------|
 | **Coordination Time** | 10-30 minutes per incident | 1-2 minutes per incident | **60-90% faster** |
 | **Resource Discovery** | Manual phone calls (60-70% of time) | Automated AI agents (<10 seconds) | **99% time saved** |
@@ -540,10 +542,10 @@ Architected for disaster scenarios: handles 100+ simultaneous incidents without 
 ## 9. Final Tagline & Value Statement
 
 ### Tagline
-> **"From Emergency Call → AI Coordination → Human Approval → Faster Response"**
+> **"ARIA — Your Emergency Response Assistant"**
 
 ### Value Statement
-> **MedRescue AI transforms emergency response from a fragmented, manual coordination nightmare into an intelligent, automated, real-time system that saves lives by saving time. We give emergency coordinators AI-powered superpowers—discovering resources instantly, optimizing decisions automatically, and coordinating responses comprehensively—while keeping humans in control of final decisions. Every second saved is a life potentially saved.**
+> **ARIA transforms emergency response from a fragmented, manual coordination nightmare into an intelligent, automated, real-time system that saves lives by saving time. We give emergency coordinators AI-powered superpowers—discovering resources instantly, optimizing decisions automatically, and coordinating responses comprehensively—while keeping humans in control of final decisions. Every second saved is a life potentially saved.**
 
 ---
 

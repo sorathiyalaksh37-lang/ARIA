@@ -1,6 +1,8 @@
-# MedRescue AI — Phase 0 Completion Checklist
+# ARIA — Phase 0 Completion Checklist
 ## Track Your Progress Through Project Initiation
 
+**Project:** ARIA (AI Rescue Assistance)  
+**Full Name:** ARIA — AI Rescue Assistance Emergency Response Platform  
 **Last Updated:** August 22, 2026  
 **Overall Status:** 15% Complete (3/20 documents)
 
@@ -66,12 +68,12 @@ Total: 20 deliverables
 **Checklist:**
 - [x] Problem statement with 5-6 pain points
 - [x] Current state scenario (manual process walkthrough)
-- [x] Future state scenario (with MedRescue AI)
+- [x] Future state scenario (with ARIA)
 - [x] Solution description
 - [x] Value proposition for each stakeholder (5 stakeholders)
 - [x] Unique selling points (8 USPs)
 - [x] Solution architecture overview
-- [x] Comparison table (without vs. with MedRescue)
+- [x] Comparison table (without vs. with ARIA)
 - [x] Final tagline and value statement
 - [x] Success metrics recap
 

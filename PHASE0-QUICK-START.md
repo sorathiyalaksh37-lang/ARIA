@@ -1,6 +1,8 @@
-# MedRescue AI — Phase 0 Quick Start Guide
+# ARIA — Phase 0 Quick Start Guide
 ## Get Started Immediately with Your Project Documentation
 
+**Project Name:** ARIA (AI Rescue Assistance)  
+**Full Name:** ARIA — AI Rescue Assistance Emergency Response Platform  
 **Last Updated:** August 22, 2026
 
 ---
@@ -46,11 +48,11 @@ Read these files in order:
 **Email Template:**
 
 ```
-Subject: MedRescue AI - Phase 0 Documentation (Review Requested)
+Subject: ARIA - Phase 0 Documentation (Review Requested)
 
 Hi Team,
 
-I've completed the initial Phase 0 documentation for the MedRescue AI project. 
+I've completed the initial Phase 0 documentation for the ARIA project. 
 Please review the attached documents and provide feedback by [Date].
 
 Documents:
@@ -390,7 +392,7 @@ kubectl version
    - Create branch protection rules
 
 2. **Setup Jira/Trello:**
-   - Create board: "MedRescue AI"
+   - Create board: "ARIA"
    - Create sprints (6 sprints)
    - Add epic for each sprint
    - Import user stories from Sprint Plan
@@ -464,7 +466,7 @@ By end of Week 1, you should have:
 
 ### 3. **Overly Generic Content**
 ❌ **Don't:** Use AI output without customization  
-✅ **Do:** Customize for MedRescue AI specifics
+✅ **Do:** Customize for ARIA specifics
 
 ### 4. **Ignoring Dependencies**
 ❌ **Don't:** Create documents in random order  
@@ -535,7 +537,7 @@ If you get stuck:
 1. **Review the README:** `docs/phase0/README.md` has detailed guidance
 2. **Check the Checklist:** `docs/phase0/phase0-checklist.md` shows exactly what's needed
 3. **Re-read the Prompt:** The original prompts have all context needed
-4. **Customize Wisely:** AI output is a starting point; add MedRescue AI specifics
+4. **Customize Wisely:** AI output is a starting point; add ARIA specifics
 
 ---
 

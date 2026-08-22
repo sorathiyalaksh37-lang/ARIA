@@ -1,7 +1,8 @@
-# MedRescue AI — Phase 0 Documentation
+# ARIA — Phase 0 Documentation
 ## Project Initiation & Planning
 
-**Project:** MedRescue AI — Agentic Emergency Response Coordination Platform  
+**Project:** ARIA (AI Rescue Assistance)  
+**Full Name:** ARIA — AI Rescue Assistance Emergency Response Platform  
 **Phase:** 0 (Project Initiation)  
 **Duration:** Week 1  
 **Status:** In Progress  
@@ -11,7 +12,7 @@
 
 ## 📋 Phase 0 Overview
 
-Phase 0 is the foundation of the MedRescue AI project. This phase involves comprehensive planning, requirements gathering, architecture design, team formation, and preparation before any development begins.
+Phase 0 is the foundation of the ARIA (AI Rescue Assistance) project. This phase involves comprehensive planning, requirements gathering, architecture design, team formation, and preparation before any development begins.
 
 **Goals:**
 - ✅ Define project scope, objectives, and success criteria
@@ -85,15 +86,15 @@ docs/phase0/
 
 #### 2. Problem & Solution Statement ✅
 **File:** `project-initiation/02-problem-solution-statement.md`  
-**Purpose:** Articulate the problem MedRescue solves and our solution approach  
+**Purpose:** Articulate the problem ARIA solves and our solution approach  
 **Contains:**
 - Detailed problem statement with pain points
 - Current state scenario (manual coordination walkthrough)
-- Future state scenario (with MedRescue AI)
+- Future state scenario (with ARIA)
 - Solution description and architecture overview
 - Value proposition by stakeholder
 - Unique selling points (USPs)
-- Comparison table (without vs. with MedRescue)
+- Comparison table (without vs. with ARIA)
 
 **Status:** Complete  
 **Next Action:** Share with stakeholders for feedback
