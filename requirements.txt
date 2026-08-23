@@ -1,0 +1,215 @@
+# ARIA Emergency Response Platform - Python Dependencies
+# Phase 1: Data Collection & Preprocessing
+# Version: 1.0
+# Updated: August 23, 2026
+
+# ============================================================================
+# CORE DATA PROCESSING
+# ============================================================================
+
+# Data manipulation and analysis
+pandas>=1.5.0,<2.0.0
+numpy>=1.24.0,<2.0.0
+
+# ============================================================================
+# WEB SCRAPING & HTTP
+# ============================================================================
+
+# HTTP requests and web scraping
+requests>=2.31.0,<3.0.0
+urllib3>=2.0.0,<3.0.0
+beautifulsoup4>=4.12.0,<5.0.0
+lxml>=4.9.0,<5.0.0
+
+# HTML parsing alternatives
+html5lib>=1.1,<2.0
+
+# ============================================================================
+# DATA VISUALIZATION
+# ============================================================================
+
+# Static visualizations
+matplotlib>=3.7.0,<4.0.0
+seaborn>=0.12.0,<1.0.0
+
+# Interactive visualizations
+plotly>=5.14.0,<6.0.0
+
+# Geographic visualizations
+folium>=0.14.0,<1.0.0
+
+# Word clouds for text analysis
+wordcloud>=1.9.0,<2.0.0
+
+# ============================================================================
+# PROGRESS TRACKING & CLI
+# ============================================================================
+
+# Progress bars and CLI improvements
+tqdm>=4.66.0,<5.0.0
+
+# Colored terminal output
+colorama>=0.4.6,<1.0.0
+
+# ============================================================================
+# SYSTEM MONITORING
+# ============================================================================
+
+# System and process utilities
+psutil>=5.9.0,<6.0.0
+
+# ============================================================================
+# DATA VALIDATION & QUALITY
+# ============================================================================
+
+# Data validation
+jsonschema>=4.17.0,<5.0.0
+
+# ============================================================================
+# UTILITIES
+# ============================================================================
+
+# Date and time handling
+python-dateutil>=2.8.0,<3.0.0
+
+# JSON handling (better than standard library)
+ujson>=5.7.0,<6.0.0
+
+# ============================================================================
+# JUPYTER & NOTEBOOKS (Optional - for EDA)
+# ============================================================================
+
+# Jupyter notebook support
+jupyter>=1.0.0,<2.0.0
+notebook>=6.5.0,<7.0.0
+ipykernel>=6.22.0,<7.0.0
+ipywidgets>=8.0.0,<9.0.0
+
+# ============================================================================
+# PDF GENERATION (Optional - for reports)
+# ============================================================================
+
+# PDF generation (requires wkhtmltopdf)
+# pdfkit>=1.0.0,<2.0.0
+
+# ============================================================================
+# GEOSPATIAL (Future - Phase 2)
+# ============================================================================
+
+# Geospatial data processing (uncomment when needed)
+# geopandas>=0.13.0,<1.0.0
+# shapely>=2.0.0,<3.0.0
+# pyproj>=3.5.0,<4.0.0
+
+# ============================================================================
+# ML & AI (Future - Phase 2)
+# ============================================================================
+
+# Machine Learning (uncomment when needed)
+# scikit-learn>=1.2.0,<2.0.0
+# xgboost>=1.7.0,<2.0.0
+# lightgbm>=3.3.0,<4.0.0
+
+# Deep Learning (uncomment when needed)
+# torch>=2.0.0,<3.0.0
+# transformers>=4.28.0,<5.0.0
+
+# NLP (uncomment when needed)
+# nltk>=3.8.0,<4.0.0
+# spacy>=3.5.0,<4.0.0
+
+# LangChain & LangGraph (uncomment when needed)
+# langchain>=0.1.0,<1.0.0
+# langgraph>=0.1.0,<1.0.0
+# openai>=1.0.0,<2.0.0
+
+# ============================================================================
+# WEB FRAMEWORK & API (Future - Phase 2)
+# ============================================================================
+
+# FastAPI and dependencies (uncomment when needed)
+# fastapi>=0.109.0,<1.0.0
+# uvicorn[standard]>=0.27.0,<1.0.0
+# pydantic>=2.0.0,<3.0.0
+# python-multipart>=0.0.6,<1.0.0
+
+# ============================================================================
+# DATABASE (Future - Phase 2)
+# ============================================================================
+
+# PostgreSQL with PostGIS (uncomment when needed)
+# psycopg2-binary>=2.9.0,<3.0.0
+# SQLAlchemy>=2.0.0,<3.0.0
+# GeoAlchemy2>=0.14.0,<1.0.0
+
+# Redis (uncomment when needed)
+# redis>=4.5.0,<5.0.0
+
+# ============================================================================
+# TESTING (Future - Phase 2)
+# ============================================================================
+
+# Testing frameworks (uncomment when needed)
+# pytest>=7.3.0,<8.0.0
+# pytest-cov>=4.0.0,<5.0.0
+# pytest-asyncio>=0.21.0,<1.0.0
+
+# ============================================================================
+# CODE QUALITY (Future - Phase 2)
+# ============================================================================
+
+# Code formatting and linting (uncomment when needed)
+# black>=23.3.0,<24.0.0
+# flake8>=6.0.0,<7.0.0
+# mypy>=1.2.0,<2.0.0
+# pylint>=2.17.0,<3.0.0
+
+# ============================================================================
+# DEPLOYMENT (Future - Phase 3)
+# ============================================================================
+
+# Deployment tools (uncomment when needed)
+# gunicorn>=20.1.0,<21.0.0
+# python-dotenv>=1.0.0,<2.0.0
+
+# ============================================================================
+# MONITORING (Future - Phase 3)
+# ============================================================================
+
+# Application monitoring (uncomment when needed)
+# prometheus-client>=0.16.0,<1.0.0
+# sentry-sdk>=1.22.0,<2.0.0
+
+# ============================================================================
+# NOTES
+# ============================================================================
+
+# Installation:
+#   pip install -r requirements.txt
+#
+# For Jupyter notebooks:
+#   pip install -r requirements.txt
+#
+# For development:
+#   Uncomment Phase 2+ dependencies as needed
+#
+# System Requirements:
+#   - Python 3.9+
+#   - pip 23.0+
+#
+# Optional System Dependencies:
+#   - wkhtmltopdf (for PDF generation)
+#   - PostgreSQL 14+ with PostGIS (Phase 2)
+#   - Redis 7+ (Phase 2)
+#
+# Platform-specific notes:
+#   - macOS: brew install wkhtmltopdf
+#   - Ubuntu: apt-get install wkhtmltopdf
+#   - Windows: Download from https://wkhtmltopdf.org/
+#
+# Upgrade all packages:
+#   pip install --upgrade -r requirements.txt
+#
+# Verify installation:
+#   pip list
+#   python -c "import pandas; print(pandas.__version__)"

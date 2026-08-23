@@ -1,0 +1,69 @@
+{
+  "generated_at": "2026-08-23T14:47:57.570662",
+  "datasets": [
+    {
+      "dataset": "hospitals",
+      "input_file": "/Users/lakshsorathiya/ARIA/data/raw/hospitals_raw.csv",
+      "output_file": "/Users/lakshsorathiya/ARIA/data/processed/hospitals_processed.csv",
+      "initial_records": 63286,
+      "status": "failed",
+      "error": "'hospital_name'"
+    },
+    {
+      "dataset": "ambulances",
+      "input_file": "/Users/lakshsorathiya/ARIA/data/raw/ambulances_raw.csv",
+      "output_file": "/Users/lakshsorathiya/ARIA/data/processed/ambulances_processed.csv",
+      "initial_records": 24975,
+      "status": "failed",
+      "error": "'registration_number'"
+    },
+    {
+      "dataset": "blood_banks",
+      "input_file": "/Users/lakshsorathiya/ARIA/data/raw/blood_banks_raw.csv",
+      "output_file": "/Users/lakshsorathiya/ARIA/data/processed/blood_banks_processed.csv",
+      "initial_records": 2479,
+      "status": "failed",
+      "error": "'blood_bank_name'"
+    },
+    {
+      "dataset": "incidents",
+      "input_file": "/Users/lakshsorathiya/ARIA/data/raw/incidents_raw.csv",
+      "output_file": "/Users/lakshsorathiya/ARIA/data/processed/incidents_processed.csv",
+      "initial_records": 100000,
+      "removed_missing_description": 0,
+      "invalid_gps": 0,
+      "completeness": {
+        "incident_id": 100.0,
+        "incident_description": 100.0,
+        "severity": 100.0,
+        "incident_type": 100.0,
+        "city": 100.0,
+        "location": 100.0,
+        "latitude": 100.0,
+        "longitude": 100.0,
+        "timestamp": 100.0,
+        "victim_count": 100.0,
+        "time_of_day": 100.0,
+        "day_of_week": 100.0,
+        "month": 100.0,
+        "season": 100.0,
+        "body_part_mentioned": 100.0,
+        "emergency_keyword": 100.0,
+        "blood_required": 100.0,
+        "ambulance_required": 100.0,
+        "hospital_required": 100.0,
+        "gps_valid": 100.0
+      },
+      "avg_completeness": 100.0,
+      "final_records": 100000,
+      "records_retained": 100000,
+      "retention_rate": 100.0,
+      "status": "success"
+    }
+  ],
+  "summary": {
+    "total_datasets": 4,
+    "successful": 1,
+    "failed": 3
+  }
+}
