@@ -14,3 +14,19 @@
 2026-08-23 14:29:41,334 - INFO - Output File: /Users/lakshsorathiya/ARIA/data/raw/ambulances_raw.csv
 2026-08-23 14:29:41,334 - INFO - Summary Report: /Users/lakshsorathiya/ARIA/data/raw/ambulances_summary.txt
 2026-08-23 14:29:41,334 - INFO - ======================================================================
+2026-08-23 14:32:27,152 - INFO - ======================================================================
+2026-08-23 14:32:27,152 - INFO - ARIA AMBULANCE FLEET DATA COLLECTION STARTED
+2026-08-23 14:32:27,152 - INFO - ======================================================================
+2026-08-23 14:32:27,152 - INFO - Generating 25000 synthetic ambulance records...
+2026-08-23 14:32:27,514 - INFO - Generated 24975 synthetic ambulance records
+2026-08-23 14:32:27,514 - INFO - Saving 24975 ambulances to /Users/lakshsorathiya/ARIA/data/raw/ambulances_raw.csv...
+2026-08-23 14:32:27,664 - INFO - Successfully saved 24975 ambulances to /Users/lakshsorathiya/ARIA/data/raw/ambulances_raw.csv
+2026-08-23 14:32:27,664 - INFO - Generating summary report...
+2026-08-23 14:32:27,669 - INFO - Summary report saved to /Users/lakshsorathiya/ARIA/data/raw/ambulances_summary.txt
+2026-08-23 14:32:27,669 - INFO - ======================================================================
+2026-08-23 14:32:27,669 - INFO - AMBULANCE DATA COLLECTION COMPLETED SUCCESSFULLY
+2026-08-23 14:32:27,669 - INFO - Total Ambulances: 24,975
+2026-08-23 14:32:27,669 - INFO - Time Elapsed: 0.52 seconds
+2026-08-23 14:32:27,669 - INFO - Output File: /Users/lakshsorathiya/ARIA/data/raw/ambulances_raw.csv
+2026-08-23 14:32:27,669 - INFO - Summary Report: /Users/lakshsorathiya/ARIA/data/raw/ambulances_summary.txt
+2026-08-23 14:32:27,669 - INFO - ======================================================================

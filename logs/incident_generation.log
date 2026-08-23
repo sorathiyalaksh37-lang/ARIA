@@ -18,3 +18,23 @@
 2026-08-23 14:29:42,651 - INFO - Output File: /Users/lakshsorathiya/ARIA/data/raw/incidents_raw.csv
 2026-08-23 14:29:42,651 - INFO - Summary Report: /Users/lakshsorathiya/ARIA/data/raw/incidents_summary.txt
 2026-08-23 14:29:42,651 - INFO - ======================================================================
+2026-08-23 14:32:27,845 - INFO - ======================================================================
+2026-08-23 14:32:27,845 - INFO - ARIA INCIDENT GENERATION STARTED
+2026-08-23 14:32:27,845 - INFO - ======================================================================
+2026-08-23 14:32:27,845 - INFO - Generating 100000 incident records...
+2026-08-23 14:32:27,845 - INFO - Distribution: Critical=15000, Moderate=35000, Low=50000
+2026-08-23 14:32:27,845 - INFO - Generating CRITICAL incidents...
+2026-08-23 14:32:27,971 - INFO - Generating MODERATE incidents...
+2026-08-23 14:32:28,241 - INFO - Generating LOW incidents...
+2026-08-23 14:32:28,641 - INFO - Generated 100000 total incidents
+2026-08-23 14:32:28,641 - INFO - Saving 100000 incidents to /Users/lakshsorathiya/ARIA/data/raw/incidents_raw.csv...
+2026-08-23 14:32:28,933 - INFO - Successfully saved to /Users/lakshsorathiya/ARIA/data/raw/incidents_raw.csv
+2026-08-23 14:32:28,933 - INFO - Generating summary report...
+2026-08-23 14:32:28,984 - INFO - Summary report saved to /Users/lakshsorathiya/ARIA/data/raw/incidents_summary.txt
+2026-08-23 14:32:28,984 - INFO - ======================================================================
+2026-08-23 14:32:28,984 - INFO - INCIDENT GENERATION COMPLETED SUCCESSFULLY
+2026-08-23 14:32:28,984 - INFO - Total Incidents: 100,000
+2026-08-23 14:32:28,984 - INFO - Time Elapsed: 1.14 seconds
+2026-08-23 14:32:28,984 - INFO - Output File: /Users/lakshsorathiya/ARIA/data/raw/incidents_raw.csv
+2026-08-23 14:32:28,984 - INFO - Summary Report: /Users/lakshsorathiya/ARIA/data/raw/incidents_summary.txt
+2026-08-23 14:32:28,984 - INFO - ======================================================================

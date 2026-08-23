@@ -13,3 +13,75 @@
 2026-08-23 14:30:07,446 - __main__ - INFO - ======================================================================
 2026-08-23 14:30:07,446 - __main__ - INFO - Fetching hospitals from National Health Portal...
 2026-08-23 14:30:07,446 - __main__ - INFO - Attempting to scrape https://nhp.gov.in/hospitals...
+2026-08-23 14:30:37,488 - urllib3.connectionpool - WARNING - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x10689de80>, 'Connection to nhp.gov.in timed out. (connect timeout=30)')': /hospitals
+2026-08-23 14:31:11,495 - urllib3.connectionpool - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x106980050>, 'Connection to nhp.gov.in timed out. (connect timeout=30)')': /hospitals
+2026-08-23 14:31:49,503 - urllib3.connectionpool - WARNING - Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x106980190>, 'Connection to nhp.gov.in timed out. (connect timeout=30)')': /hospitals
+2026-08-23 14:32:19,506 - __main__ - ERROR - Failed to fetch NHP data: HTTPSConnectionPool(host='nhp.gov.in', port=443): Max retries exceeded with url: /hospitals (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x1069802d0>, 'Connection to nhp.gov.in timed out. (connect timeout=30)'))
+2026-08-23 14:32:19,508 - __main__ - INFO - Collected 0 hospitals from NHP
+2026-08-23 14:32:19,508 - __main__ - INFO - ✓ NHP: 0 hospitals collected
+2026-08-23 14:32:19,508 - __main__ - INFO - 
+======================================================================
+2026-08-23 14:32:19,508 - __main__ - INFO - SOURCE 2: AYUSHMAN BHARAT (PMJAY)
+2026-08-23 14:32:19,508 - __main__ - INFO - ======================================================================
+2026-08-23 14:32:19,508 - __main__ - INFO - Fetching hospitals from Ayushman Bharat...
+2026-08-23 14:32:19,508 - __main__ - INFO - Attempting to scrape https://pmjay.gov.in/hospitals...
+2026-08-23 14:32:49,524 - urllib3.connectionpool - WARNING - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x106980b90>, 'Connection to pmjay.gov.in timed out. (connect timeout=30)')': /hospitals
+2026-08-23 14:33:23,532 - urllib3.connectionpool - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x106980cd0>, 'Connection to pmjay.gov.in timed out. (connect timeout=30)')': /hospitals
+2026-08-23 14:34:01,540 - urllib3.connectionpool - WARNING - Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x106980e10>, 'Connection to pmjay.gov.in timed out. (connect timeout=30)')': /hospitals
+2026-08-23 14:34:31,545 - __main__ - ERROR - Failed to fetch PMJAY data: HTTPSConnectionPool(host='pmjay.gov.in', port=443): Max retries exceeded with url: /hospitals (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x106980f50>, 'Connection to pmjay.gov.in timed out. (connect timeout=30)'))
+2026-08-23 14:34:31,546 - __main__ - INFO - Collected 0 hospitals from PMJAY
+2026-08-23 14:34:31,546 - __main__ - INFO - ✓ PMJAY: 0 hospitals collected
+2026-08-23 14:34:31,546 - __main__ - INFO - 
+======================================================================
+2026-08-23 14:34:31,546 - __main__ - INFO - SOURCE 3: OPENSTREETMAP (OSM)
+2026-08-23 14:34:31,546 - __main__ - INFO - ======================================================================
+2026-08-23 14:34:31,546 - __main__ - INFO - Fetching hospitals from OpenStreetMap...
+2026-08-23 14:34:31,546 - __main__ - INFO - Querying OSM region 1/3...
+2026-08-23 14:34:53,932 - __main__ - INFO - Found 32296 hospitals in region 1
+2026-08-23 14:34:56,014 - __main__ - INFO - Querying OSM region 2/3...
+2026-08-23 14:35:20,338 - __main__ - INFO - Found 19053 hospitals in region 2
+2026-08-23 14:35:22,381 - __main__ - INFO - Querying OSM region 3/3...
+2026-08-23 14:35:57,699 - __main__ - INFO - Found 12443 hospitals in region 3
+2026-08-23 14:35:59,733 - __main__ - INFO - Collected 63792 hospitals from OpenStreetMap
+2026-08-23 14:35:59,740 - __main__ - INFO - ✓ OSM: 63792 hospitals collected
+2026-08-23 14:35:59,740 - __main__ - INFO - 
+======================================================================
+2026-08-23 14:35:59,740 - __main__ - INFO - SOURCE 4: GOOGLE PLACES API
+2026-08-23 14:35:59,740 - __main__ - INFO - ======================================================================
+2026-08-23 14:35:59,740 - __main__ - INFO - Fetching hospitals from Google Places API...
+2026-08-23 14:35:59,740 - __main__ - WARNING - Google Places API key not provided. Skipping Google Places scraping.
+2026-08-23 14:35:59,740 - __main__ - INFO - Set environment variable: export GOOGLE_PLACES_API_KEY='your_key'
+2026-08-23 14:35:59,740 - __main__ - INFO - ✓ Google Places: 0 hospitals collected
+2026-08-23 14:35:59,740 - __main__ - INFO - 
+======================================================================
+2026-08-23 14:35:59,740 - __main__ - INFO - SOURCE 5: HOSPITAL DIRECTORY
+2026-08-23 14:35:59,740 - __main__ - INFO - ======================================================================
+2026-08-23 14:35:59,740 - __main__ - ERROR - ✗ Hospital Directory scraping failed: name 'scrape_hospital_directory' is not defined
+2026-08-23 14:35:59,740 - __main__ - INFO - 
+======================================================================
+2026-08-23 14:35:59,740 - __main__ - INFO - SOURCE 6: SYNTHETIC GENERATION
+2026-08-23 14:35:59,740 - __main__ - INFO - ======================================================================
+2026-08-23 14:35:59,740 - __main__ - INFO - Already have 63792 hospitals, no synthetic generation needed
+2026-08-23 14:35:59,741 - __main__ - INFO - 
+======================================================================
+2026-08-23 14:35:59,741 - __main__ - INFO - DATA CLEANING
+2026-08-23 14:35:59,741 - __main__ - INFO - ======================================================================
+2026-08-23 14:35:59,741 - __main__ - INFO - Removing duplicates from 63792 hospitals...
+2026-08-23 14:35:59,794 - __main__ - INFO - Removed 506 duplicates. 63286 unique hospitals remaining.
+2026-08-23 14:35:59,802 - __main__ - INFO - Saving 63286 hospitals to /Users/lakshsorathiya/ARIA/data/raw/hospitals_raw.csv...
+2026-08-23 14:35:59,961 - __main__ - INFO - Successfully saved 63286 hospitals to /Users/lakshsorathiya/ARIA/data/raw/hospitals_raw.csv
+2026-08-23 14:35:59,961 - __main__ - INFO - Generating summary report...
+2026-08-23 14:36:00,011 - __main__ - INFO - Summary report saved to /Users/lakshsorathiya/ARIA/data/raw/hospital_summary.txt
+2026-08-23 14:36:00,011 - __main__ - INFO - 
+======================================================================
+2026-08-23 14:36:00,011 - __main__ - INFO - HOSPITAL DATA COLLECTION COMPLETED SUCCESSFULLY
+2026-08-23 14:36:00,011 - __main__ - INFO - ======================================================================
+2026-08-23 14:36:00,011 - __main__ - INFO - Total Hospitals Collected: 63,286
+2026-08-23 14:36:00,011 - __main__ - INFO - Time Elapsed: 352.57 seconds (5.9 minutes)
+2026-08-23 14:36:00,011 - __main__ - INFO - Output File: /Users/lakshsorathiya/ARIA/data/raw/hospitals_raw.csv
+2026-08-23 14:36:00,011 - __main__ - INFO - Summary Report: /Users/lakshsorathiya/ARIA/data/raw/hospital_summary.txt
+2026-08-23 14:36:00,011 - __main__ - INFO - ======================================================================
+2026-08-23 14:36:00,011 - __main__ - INFO - 
+Data Sources Breakdown:
+2026-08-23 14:36:00,018 - __main__ - INFO -   OPENSTREETMAP: 63,286 hospitals
+2026-08-23 14:36:00,018 - __main__ - INFO - ======================================================================
