@@ -1,0 +1,125 @@
+2026-08-23 14:47:56,712 - __main__ - INFO - ======================================================================
+2026-08-23 14:47:56,712 - __main__ - INFO - ARIA DATA PREPROCESSING & VALIDATION
+2026-08-23 14:47:56,712 - __main__ - INFO - ======================================================================
+2026-08-23 14:47:56,712 - __main__ - INFO - Start time: 2026-08-23 14:47:56
+2026-08-23 14:47:56,712 - __main__ - INFO - ======================================================================
+2026-08-23 14:47:56,712 - __main__ - INFO - PREPROCESSING HOSPITALS
+2026-08-23 14:47:56,712 - __main__ - INFO - ======================================================================
+2026-08-23 14:47:56,712 - __main__ - INFO - Loading data from /Users/lakshsorathiya/ARIA/data/raw/hospitals_raw.csv
+2026-08-23 14:47:56,811 - __main__ - INFO - Initial records: 63286
+2026-08-23 14:47:56,812 - __main__ - ERROR - Error preprocessing hospitals: 'hospital_name'
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python3.13/site-packages/pandas/core/indexes/base.py", line 3812, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7096, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'hospital_name'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/lakshsorathiya/ARIA/scripts/data_preprocessor.py", line 205, in preprocess_hospitals
+    df = df[df['hospital_name'].notna()]
+            ~~^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.13/site-packages/pandas/core/frame.py", line 4113, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "/opt/anaconda3/lib/python3.13/site-packages/pandas/core/indexes/base.py", line 3819, in get_loc
+    raise KeyError(key) from err
+KeyError: 'hospital_name'
+2026-08-23 14:47:56,818 - __main__ - INFO - ======================================================================
+2026-08-23 14:47:56,818 - __main__ - INFO - PREPROCESSING AMBULANCES
+2026-08-23 14:47:56,818 - __main__ - INFO - ======================================================================
+2026-08-23 14:47:56,818 - __main__ - INFO - Loading data from /Users/lakshsorathiya/ARIA/data/raw/ambulances_raw.csv
+2026-08-23 14:47:56,900 - __main__ - INFO - Initial records: 24975
+2026-08-23 14:47:56,900 - __main__ - ERROR - Error preprocessing ambulances: 'registration_number'
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python3.13/site-packages/pandas/core/indexes/base.py", line 3812, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7096, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'registration_number'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/lakshsorathiya/ARIA/scripts/data_preprocessor.py", line 320, in preprocess_ambulances
+    df = df[df['registration_number'].notna()]
+            ~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.13/site-packages/pandas/core/frame.py", line 4113, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "/opt/anaconda3/lib/python3.13/site-packages/pandas/core/indexes/base.py", line 3819, in get_loc
+    raise KeyError(key) from err
+KeyError: 'registration_number'
+2026-08-23 14:47:56,902 - __main__ - INFO - ======================================================================
+2026-08-23 14:47:56,902 - __main__ - INFO - PREPROCESSING BLOOD BANKS
+2026-08-23 14:47:56,902 - __main__ - INFO - ======================================================================
+2026-08-23 14:47:56,902 - __main__ - INFO - Loading data from /Users/lakshsorathiya/ARIA/data/raw/blood_banks_raw.csv
+2026-08-23 14:47:56,916 - __main__ - INFO - Initial records: 2479
+2026-08-23 14:47:56,916 - __main__ - ERROR - Error preprocessing blood banks: 'blood_bank_name'
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python3.13/site-packages/pandas/core/indexes/base.py", line 3812, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7096, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'blood_bank_name'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/lakshsorathiya/ARIA/scripts/data_preprocessor.py", line 432, in preprocess_blood_banks
+    df = df[df['blood_bank_name'].notna()]
+            ~~^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.13/site-packages/pandas/core/frame.py", line 4113, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "/opt/anaconda3/lib/python3.13/site-packages/pandas/core/indexes/base.py", line 3819, in get_loc
+    raise KeyError(key) from err
+KeyError: 'blood_bank_name'
+2026-08-23 14:47:56,917 - __main__ - INFO - ======================================================================
+2026-08-23 14:47:56,917 - __main__ - INFO - PREPROCESSING INCIDENTS
+2026-08-23 14:47:56,917 - __main__ - INFO - ======================================================================
+2026-08-23 14:47:56,917 - __main__ - INFO - Loading data from /Users/lakshsorathiya/ARIA/data/raw/incidents_raw.csv
+2026-08-23 14:47:57,052 - __main__ - INFO - Initial records: 100000
+2026-08-23 14:47:57,059 - __main__ - INFO - Removed 0 records with missing incident_description
+2026-08-23 14:47:57,068 - __main__ - INFO - Validated severity values
+2026-08-23 14:47:57,272 - __main__ - INFO - Found 0 records with invalid GPS coordinates
+2026-08-23 14:47:57,293 - __main__ - INFO - Average completeness: 100.00%
+2026-08-23 14:47:57,566 - __main__ - INFO - Saved 100000 processed records to /Users/lakshsorathiya/ARIA/data/processed/incidents_processed.csv
+2026-08-23 14:47:57,566 - __main__ - INFO - Retention rate: 100.00%
+2026-08-23 14:47:57,570 - __main__ - INFO - ======================================================================
+2026-08-23 14:47:57,570 - __main__ - INFO - GENERATING DATA DICTIONARY
+2026-08-23 14:47:57,570 - __main__ - INFO - ======================================================================
+2026-08-23 14:47:57,570 - __main__ - INFO - Data dictionary saved to /Users/lakshsorathiya/ARIA/data/processed/data_dictionary.md
+2026-08-23 14:47:57,570 - __main__ - INFO - ======================================================================
+2026-08-23 14:47:57,570 - __main__ - INFO - GENERATING VALIDATION REPORTS
+2026-08-23 14:47:57,570 - __main__ - INFO - ======================================================================
+2026-08-23 14:47:57,570 - __main__ - INFO - JSON report saved to /Users/lakshsorathiya/ARIA/reports/validation_report.json
+2026-08-23 14:47:57,571 - __main__ - INFO - HTML report saved to /Users/lakshsorathiya/ARIA/reports/validation_report.html
+2026-08-23 14:47:57,571 - __main__ - INFO - ======================================================================
+2026-08-23 14:47:57,571 - __main__ - INFO - PREPROCESSING COMPLETE
+2026-08-23 14:47:57,571 - __main__ - INFO - ======================================================================
+2026-08-23 14:47:57,571 - __main__ - INFO - End time: 2026-08-23 14:47:57
+2026-08-23 14:47:57,571 - __main__ - INFO - Total duration: 0.86 seconds
+2026-08-23 14:47:57,571 - __main__ - INFO - Datasets processed: 4
+2026-08-23 14:47:57,571 - __main__ - INFO - Successful: 1
+2026-08-23 14:47:57,571 - __main__ - INFO - Failed: 3
+2026-08-23 14:47:57,571 - __main__ - INFO - Total records: 100,000
+2026-08-23 14:47:57,571 - __main__ - INFO - 
+2026-08-23 14:47:57,571 - __main__ - INFO - Output files:
+2026-08-23 14:47:57,571 - __main__ - INFO -   - /Users/lakshsorathiya/ARIA/data/processed/hospitals_processed.csv
+2026-08-23 14:47:57,571 - __main__ - INFO -   - /Users/lakshsorathiya/ARIA/data/processed/ambulances_processed.csv
+2026-08-23 14:47:57,571 - __main__ - INFO -   - /Users/lakshsorathiya/ARIA/data/processed/blood_banks_processed.csv
+2026-08-23 14:47:57,571 - __main__ - INFO -   - /Users/lakshsorathiya/ARIA/data/processed/incidents_processed.csv
+2026-08-23 14:47:57,571 - __main__ - INFO -   - /Users/lakshsorathiya/ARIA/data/processed/data_dictionary.md
+2026-08-23 14:47:57,571 - __main__ - INFO -   - /Users/lakshsorathiya/ARIA/reports/validation_report.html
+2026-08-23 14:47:57,571 - __main__ - INFO -   - /Users/lakshsorathiya/ARIA/reports/validation_report.json
+2026-08-23 14:47:57,571 - __main__ - INFO -   - /Users/lakshsorathiya/ARIA/logs/preprocessing.log
+2026-08-23 14:47:57,571 - __main__ - INFO - ======================================================================
