@@ -1,0 +1,5 @@
+{
+  "xgboost": 0.6,
+  "bert": 0.4,
+  "confidence_threshold": 0.7
+}

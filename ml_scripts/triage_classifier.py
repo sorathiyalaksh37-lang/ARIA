@@ -183,29 +183,49 @@ class TriageDataLoader:
         """Create numerical feature matrix."""
         features = []
         
+        # Extract hour from timestamp if available
+        if 'timestamp' in df.columns:
+            try:
+                df['hour'] = pd.to_datetime(df['timestamp']).dt.hour
+            except:
+                pass
+        
         # Time-based features (if available)
         if 'hour' in df.columns:
-            hour_sin = np.sin(2 * np.pi * df['hour'] / 24)
-            hour_cos = np.cos(2 * np.pi * df['hour'] / 24)
+            hour_vals = pd.to_numeric(df['hour'], errors='coerce').fillna(12).values
+            hour_sin = np.sin(2 * np.pi * hour_vals / 24)
+            hour_cos = np.cos(2 * np.pi * hour_vals / 24)
             features.extend([hour_sin, hour_cos])
         
         if 'day_of_week' in df.columns:
-            dow_sin = np.sin(2 * np.pi * df['day_of_week'] / 7)
-            dow_cos = np.cos(2 * np.pi * df['day_of_week'] / 7)
+            # Convert day names to numbers if needed
+            day_map = {'MON': 0, 'TUE': 1, 'WED': 2, 'THU': 3, 'FRI': 4, 'SAT': 5, 'SUN': 6}
+            if df['day_of_week'].dtype == 'object':
+                day_vals = df['day_of_week'].map(day_map).fillna(0).values
+            else:
+                day_vals = pd.to_numeric(df['day_of_week'], errors='coerce').fillna(0).values
+            dow_sin = np.sin(2 * np.pi * day_vals / 7)
+            dow_cos = np.cos(2 * np.pi * day_vals / 7)
             features.extend([dow_sin, dow_cos])
         
         if 'month' in df.columns:
-            month_sin = np.sin(2 * np.pi * df['month'] / 12)
-            month_cos = np.cos(2 * np.pi * df['month'] / 12)
+            month_vals = pd.to_numeric(df['month'], errors='coerce').fillna(6).values
+            month_sin = np.sin(2 * np.pi * month_vals / 12)
+            month_cos = np.cos(2 * np.pi * month_vals / 12)
             features.extend([month_sin, month_cos])
+        
+        # Victim count
+        if 'victim_count' in df.columns:
+            victims = pd.to_numeric(df['victim_count'], errors='coerce').fillna(0).values
+            features.append(victims)
         
         # Casualties/injuries (if available)
         if 'casualties' in df.columns:
-            casualties = df['casualties'].fillna(0).values
+            casualties = pd.to_numeric(df['casualties'], errors='coerce').fillna(0).values
             features.append(casualties)
         
         if 'injuries' in df.columns:
-            injuries = df['injuries'].fillna(0).values
+            injuries = pd.to_numeric(df['injuries'], errors='coerce').fillna(0).values
             features.append(injuries)
         
         if features:
@@ -279,7 +299,6 @@ class XGBoostTriageModel:
         self.model.fit(
             X_train_features, y_train,
             eval_set=eval_set,
-            early_stopping_rounds=50,
             verbose=False
         )
         

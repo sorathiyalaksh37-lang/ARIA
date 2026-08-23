@@ -1,0 +1,183 @@
+2026-08-23 15:43:35,426 - __main__ - INFO - ======================================================================
+2026-08-23 15:43:35,426 - __main__ - INFO - ARIA TRIAGE CLASSIFIER TRAINING
+2026-08-23 15:43:35,426 - __main__ - INFO - ======================================================================
+2026-08-23 15:43:35,426 - __main__ - INFO - Start time: 2026-08-23 15:43:35
+2026-08-23 15:43:35,426 - __main__ - INFO - Loading data from /Users/lakshsorathiya/ARIA/data/processed/incidents_processed.csv
+2026-08-23 15:43:35,591 - __main__ - INFO - Loaded 100,000 records
+2026-08-23 15:43:35,591 - __main__ - INFO - Preparing features and target...
+2026-08-23 15:43:35,600 - __main__ - INFO - Class distribution:
+2026-08-23 15:43:35,600 - __main__ - INFO -   CRITICAL: 15,000 (15.0%)
+2026-08-23 15:43:35,600 - __main__ - INFO -   LOW: 50,000 (50.0%)
+2026-08-23 15:43:35,600 - __main__ - INFO -   MODERATE: 35,000 (35.0%)
+2026-08-23 15:43:35,633 - __main__ - INFO - 
+Data splits:
+2026-08-23 15:43:35,633 - __main__ - INFO -   Train: 70,000 samples
+2026-08-23 15:43:35,633 - __main__ - INFO -   Val:   15,000 samples
+2026-08-23 15:43:35,633 - __main__ - INFO -   Test:  15,000 samples
+2026-08-23 15:43:35,633 - __main__ - INFO - ======================================================================
+2026-08-23 15:43:35,633 - __main__ - INFO - TRAINING ENSEMBLE MODEL
+2026-08-23 15:43:35,633 - __main__ - INFO - ======================================================================
+2026-08-23 15:43:35,633 - __main__ - INFO - Training XGBoost model...
+2026-08-23 15:43:35,942 - __main__ - ERROR - Training failed: can't multiply sequence by non-int of type 'float'
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python3.13/site-packages/pandas/core/ops/array_ops.py", line 218, in _na_arithmetic_op
+    result = func(left, right)
+  File "/opt/anaconda3/lib/python3.13/site-packages/pandas/core/computation/expressions.py", line 242, in evaluate
+    return _evaluate(op, op_str, a, b)  # type: ignore[misc]
+  File "/opt/anaconda3/lib/python3.13/site-packages/pandas/core/computation/expressions.py", line 131, in _evaluate_numexpr
+    result = _evaluate_standard(op, op_str, a, b)
+  File "/opt/anaconda3/lib/python3.13/site-packages/pandas/core/computation/expressions.py", line 73, in _evaluate_standard
+    return op(a, b)
+  File "/opt/anaconda3/lib/python3.13/site-packages/pandas/core/roperator.py", line 19, in rmul
+    return right * left
+           ~~~~~~^~~~~~
+TypeError: can't multiply sequence by non-int of type 'float'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/lakshsorathiya/ARIA/ml_scripts/triage_classifier.py", line 742, in main
+    training_results = model.train(
+        X_train, y_train.values,
+        X_val, y_val.values
+    )
+  File "/Users/lakshsorathiya/ARIA/ml_scripts/triage_classifier.py", line 532, in train
+    xgb_metrics = self.xgboost_model.train(X_train, y_train, X_val, y_val)
+  File "/Users/lakshsorathiya/ARIA/ml_scripts/triage_classifier.py", line 269, in train
+    X_train_features = self.create_features(X_train, fit=True)
+  File "/Users/lakshsorathiya/ARIA/ml_scripts/triage_classifier.py", line 253, in create_features
+    num_features = data_loader.create_numerical_features(X)
+  File "/Users/lakshsorathiya/ARIA/ml_scripts/triage_classifier.py", line 193, in create_numerical_features
+    dow_sin = np.sin(2 * np.pi * df['day_of_week'] / 7)
+                     ~~~~~~~~~~^~~~~~~~~~~~~~~~~~~
+  File "/opt/anaconda3/lib/python3.13/site-packages/pandas/core/ops/common.py", line 76, in new_method
+    return method(self, other)
+  File "/opt/anaconda3/lib/python3.13/site-packages/pandas/core/arraylike.py", line 206, in __rmul__
+    return self._arith_method(other, roperator.rmul)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.13/site-packages/pandas/core/series.py", line 6154, in _arith_method
+    return base.IndexOpsMixin._arith_method(self, other, op)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.13/site-packages/pandas/core/base.py", line 1391, in _arith_method
+    result = ops.arithmetic_op(lvalues, rvalues, op)
+  File "/opt/anaconda3/lib/python3.13/site-packages/pandas/core/ops/array_ops.py", line 283, in arithmetic_op
+    res_values = _na_arithmetic_op(left, right, op)  # type: ignore[arg-type]
+  File "/opt/anaconda3/lib/python3.13/site-packages/pandas/core/ops/array_ops.py", line 227, in _na_arithmetic_op
+    result = _masked_arith_op(left, right, op)
+  File "/opt/anaconda3/lib/python3.13/site-packages/pandas/core/ops/array_ops.py", line 182, in _masked_arith_op
+    result[mask] = op(xrav[mask], y)
+                   ~~^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.13/site-packages/pandas/core/roperator.py", line 19, in rmul
+    return right * left
+           ~~~~~~^~~~~~
+TypeError: can't multiply sequence by non-int of type 'float'
+2026-08-23 15:44:07,995 - __main__ - INFO - ======================================================================
+2026-08-23 15:44:07,995 - __main__ - INFO - ARIA TRIAGE CLASSIFIER TRAINING
+2026-08-23 15:44:07,995 - __main__ - INFO - ======================================================================
+2026-08-23 15:44:07,995 - __main__ - INFO - Start time: 2026-08-23 15:44:07
+2026-08-23 15:44:07,995 - __main__ - INFO - Loading data from /Users/lakshsorathiya/ARIA/data/processed/incidents_processed.csv
+2026-08-23 15:44:08,141 - __main__ - INFO - Loaded 100,000 records
+2026-08-23 15:44:08,141 - __main__ - INFO - Preparing features and target...
+2026-08-23 15:44:08,149 - __main__ - INFO - Class distribution:
+2026-08-23 15:44:08,150 - __main__ - INFO -   CRITICAL: 15,000 (15.0%)
+2026-08-23 15:44:08,150 - __main__ - INFO -   LOW: 50,000 (50.0%)
+2026-08-23 15:44:08,150 - __main__ - INFO -   MODERATE: 35,000 (35.0%)
+2026-08-23 15:44:08,178 - __main__ - INFO - 
+Data splits:
+2026-08-23 15:44:08,178 - __main__ - INFO -   Train: 70,000 samples
+2026-08-23 15:44:08,178 - __main__ - INFO -   Val:   15,000 samples
+2026-08-23 15:44:08,178 - __main__ - INFO -   Test:  15,000 samples
+2026-08-23 15:44:08,178 - __main__ - INFO - ======================================================================
+2026-08-23 15:44:08,178 - __main__ - INFO - TRAINING ENSEMBLE MODEL
+2026-08-23 15:44:08,178 - __main__ - INFO - ======================================================================
+2026-08-23 15:44:08,178 - __main__ - INFO - Training XGBoost model...
+2026-08-23 15:44:10,375 - __main__ - INFO - Feature matrix shape: (70000, 5694)
+2026-08-23 15:44:10,375 - __main__ - ERROR - Training failed: XGBClassifier.fit() got an unexpected keyword argument 'early_stopping_rounds'
+Traceback (most recent call last):
+  File "/Users/lakshsorathiya/ARIA/ml_scripts/triage_classifier.py", line 762, in main
+    training_results = model.train(
+        X_train, y_train.values,
+        X_val, y_val.values
+    )
+  File "/Users/lakshsorathiya/ARIA/ml_scripts/triage_classifier.py", line 552, in train
+    xgb_metrics = self.xgboost_model.train(X_train, y_train, X_val, y_val)
+  File "/Users/lakshsorathiya/ARIA/ml_scripts/triage_classifier.py", line 299, in train
+    self.model.fit(
+    ~~~~~~~~~~~~~~^
+        X_train_features, y_train,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        verbose=False
+        ^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/anaconda3/lib/python3.13/site-packages/xgboost/core.py", line 751, in inner_f
+    return func(**kwargs)
+TypeError: XGBClassifier.fit() got an unexpected keyword argument 'early_stopping_rounds'
+2026-08-23 15:44:26,342 - __main__ - INFO - ======================================================================
+2026-08-23 15:44:26,342 - __main__ - INFO - ARIA TRIAGE CLASSIFIER TRAINING
+2026-08-23 15:44:26,342 - __main__ - INFO - ======================================================================
+2026-08-23 15:44:26,342 - __main__ - INFO - Start time: 2026-08-23 15:44:26
+2026-08-23 15:44:26,342 - __main__ - INFO - Loading data from /Users/lakshsorathiya/ARIA/data/processed/incidents_processed.csv
+2026-08-23 15:44:26,474 - __main__ - INFO - Loaded 100,000 records
+2026-08-23 15:44:26,474 - __main__ - INFO - Preparing features and target...
+2026-08-23 15:44:26,482 - __main__ - INFO - Class distribution:
+2026-08-23 15:44:26,482 - __main__ - INFO -   CRITICAL: 15,000 (15.0%)
+2026-08-23 15:44:26,482 - __main__ - INFO -   LOW: 50,000 (50.0%)
+2026-08-23 15:44:26,482 - __main__ - INFO -   MODERATE: 35,000 (35.0%)
+2026-08-23 15:44:26,510 - __main__ - INFO - 
+Data splits:
+2026-08-23 15:44:26,510 - __main__ - INFO -   Train: 70,000 samples
+2026-08-23 15:44:26,510 - __main__ - INFO -   Val:   15,000 samples
+2026-08-23 15:44:26,510 - __main__ - INFO -   Test:  15,000 samples
+2026-08-23 15:44:26,510 - __main__ - INFO - ======================================================================
+2026-08-23 15:44:26,510 - __main__ - INFO - TRAINING ENSEMBLE MODEL
+2026-08-23 15:44:26,510 - __main__ - INFO - ======================================================================
+2026-08-23 15:44:26,510 - __main__ - INFO - Training XGBoost model...
+2026-08-23 15:44:28,197 - __main__ - INFO - Feature matrix shape: (70000, 5694)
+2026-08-23 15:53:02,829 - __main__ - INFO - XGBoost Validation Metrics:
+2026-08-23 15:53:02,830 - __main__ - INFO -   accuracy: 1.0000
+2026-08-23 15:53:02,830 - __main__ - INFO -   f1_macro: 1.0000
+2026-08-23 15:53:02,830 - __main__ - INFO -   precision_macro: 1.0000
+2026-08-23 15:53:02,830 - __main__ - INFO -   recall_macro: 1.0000
+2026-08-23 15:53:02,855 - __main__ - INFO - ======================================================================
+2026-08-23 15:53:02,855 - __main__ - INFO - MODEL EVALUATION
+2026-08-23 15:53:02,855 - __main__ - INFO - ======================================================================
+2026-08-23 15:53:03,381 - __main__ - INFO - Accuracy:  0.9999
+2026-08-23 15:53:03,381 - __main__ - INFO - Precision: 0.9999
+2026-08-23 15:53:03,381 - __main__ - INFO - Recall:    0.9999
+2026-08-23 15:53:03,381 - __main__ - INFO - F1-Score:  0.9999
+2026-08-23 15:53:03,381 - __main__ - INFO - 
+Per-Class Metrics:
+2026-08-23 15:53:03,385 - __main__ - INFO - 
+CRITICAL:
+2026-08-23 15:53:03,385 - __main__ - INFO -   Precision: 1.0000
+2026-08-23 15:53:03,385 - __main__ - INFO -   Recall:    0.9996
+2026-08-23 15:53:03,385 - __main__ - INFO -   F1-Score:  0.9998
+2026-08-23 15:53:03,385 - __main__ - INFO - 
+LOW:
+2026-08-23 15:53:03,385 - __main__ - INFO -   Precision: 1.0000
+2026-08-23 15:53:03,385 - __main__ - INFO -   Recall:    1.0000
+2026-08-23 15:53:03,385 - __main__ - INFO -   F1-Score:  1.0000
+2026-08-23 15:53:03,385 - __main__ - INFO - 
+MODERATE:
+2026-08-23 15:53:03,385 - __main__ - INFO -   Precision: 0.9998
+2026-08-23 15:53:03,385 - __main__ - INFO -   Recall:    1.0000
+2026-08-23 15:53:03,385 - __main__ - INFO -   F1-Score:  0.9999
+2026-08-23 15:53:03,395 - __main__ - INFO - 
+ROC-AUC (OvR): 1.0000
+2026-08-23 15:53:03,896 - __main__ - INFO - Creating visualizations...
+2026-08-23 15:53:05,020 - __main__ - INFO - Saved confusion matrix to /Users/lakshsorathiya/ARIA/reports/confusion_matrix.png
+2026-08-23 15:53:05,020 - __main__ - INFO - Saving model artifacts...
+2026-08-23 15:53:05,047 - __main__ - INFO - Model artifacts saved to /Users/lakshsorathiya/ARIA/models
+2026-08-23 15:53:05,047 - __main__ - INFO - ======================================================================
+2026-08-23 15:53:05,047 - __main__ - INFO - TRAINING COMPLETE
+2026-08-23 15:53:05,047 - __main__ - INFO - ======================================================================
+2026-08-23 15:53:05,047 - __main__ - INFO - Duration: 518.71 seconds
+2026-08-23 15:53:05,047 - __main__ - INFO - Final Test Accuracy: 0.9999
+2026-08-23 15:53:05,047 - __main__ - INFO - Final Test F1-Score: 0.9999
+2026-08-23 15:53:05,047 - __main__ - INFO - ✅ Target accuracy (>85%) ACHIEVED!
+2026-08-23 15:53:05,047 - __main__ - INFO - 
+Model saved to: /Users/lakshsorathiya/ARIA/models
+2026-08-23 15:53:05,047 - __main__ - INFO - Reports saved to: /Users/lakshsorathiya/ARIA/reports
+2026-08-23 15:53:05,047 - __main__ - INFO - ======================================================================

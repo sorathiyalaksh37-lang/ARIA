@@ -6,8 +6,8 @@
 
 **ARIA (AI Rescue Assistance)** is an intelligent emergency response coordination platform that uses multi-agent AI systems (LangGraph) to automate the complex process of coordinating hospitals, ambulances, blood banks, and routes during medical emergencies. The platform reduces coordination time by 60% (from 10+ minutes to under 2 minutes) while keeping human coordinators in control of final decisions.
 
-**Status:** Phase 1 Complete - Data Collection & Preprocessing ✅  
-**Progress:** 30% Complete  
+**Status:** Phase 2 Complete - ML Models Developed ✅  
+**Progress:** 50% Complete  
 **Timeline:** 18 weeks total  
 **Team:** 4 members
 
@@ -34,6 +34,20 @@ ARIA/
 │   ├── requirements.txt              # Dependencies
 │   └── README.md                     # Script documentation
 │
+├── ml_scripts/                        # ✅ Machine Learning Models (NEW!)
+│   ├── triage_classifier.py          # XGBoost + BERT (900 lines)
+│   ├── eta_predictor.py              # XGBoost Regressor (700 lines)
+│   ├── hospital_ranker.py            # LambdaMART Ranker (600 lines)
+│   ├── resource_predictor.py         # LSTM + Prophet (700 lines)
+│   └── hotspot_predictor.py          # DBSCAN + Isolation Forest (600 lines)
+│
+├── models/                            # ✅ Trained model artifacts (NEW!)
+│   ├── triage_*.pkl                  # Triage classifier models
+│   ├── eta_*.pkl                     # ETA predictor models
+│   ├── hospital_ranker.*             # Hospital ranking model
+│   ├── resource_*.{pth,pkl,json}     # Resource forecasting models
+│   └── hotspot_*.pkl                 # Hotspot detection models
+│
 ├── notebooks/                         # ✅ Analysis notebooks
 │   └── 01_EDA_Comprehensive.ipynb    # Complete EDA
 │
@@ -46,16 +60,28 @@ ARIA/
 │   ├── validation_report.html        # Data quality metrics
 │   ├── validation_report.json        # JSON summary
 │   ├── pipeline_report.html          # Pipeline execution
-│   └── pipeline_summary.json         # Pipeline metrics
+│   ├── pipeline_summary.json         # Pipeline metrics
+│   ├── confusion_matrix.png          # Triage evaluation (NEW!)
+│   ├── eta_predictor_evaluation.png  # ETA evaluation (NEW!)
+│   ├── hospital_ranker_evaluation.png # Hospital ranking (NEW!)
+│   ├── resource_predictor_evaluation.png # Resource forecasting (NEW!)
+│   └── hotspot_predictor_evaluation.png # Hotspot detection (NEW!)
 │
 ├── docs/                              # ✅ Documentation
 │   ├── phase0/                       # Phase 0 documentation
 │   ├── PHASE1-COMPLETE.md            # 📖 Phase 1 complete guide
+│   ├── PHASE2-ML-MODELS.md           # 📖 Phase 2 ML guide (NEW!)
 │   ├── phase1_report.html            # Phase 1 completion report
 │   ├── phase1_summary.json           # Summary metrics
 │   └── SPRINT1-DATA-COLLECTION-STATUS.md
 │
 ├── logs/                              # ✅ Execution logs
+│   ├── triage_training.log           # Triage model training (NEW!)
+│   ├── eta_predictor_training.log    # ETA training (NEW!)
+│   ├── hospital_ranker_training.log  # Hospital ranking (NEW!)
+│   ├── resource_predictor_training.log # Resource forecasting (NEW!)
+│   └── hotspot_predictor_training.log # Hotspot detection (NEW!)
+│
 └── .git/                              # Git repository
 
 ```
@@ -65,7 +91,8 @@ ARIA/
 ## 🎯 Quick Links
 
 ### 📖 Documentation
-- **[PHASE 1 COMPLETE GUIDE](./docs/PHASE1-COMPLETE.md)** ⭐ Read this first!
+- **[PHASE 2 ML MODELS GUIDE](./docs/PHASE2-ML-MODELS.md)** ⭐ NEW - 5 Production ML Models!
+- **[PHASE 1 COMPLETE GUIDE](./docs/PHASE1-COMPLETE.md)** — Data pipeline complete
 - [Final Completion Report](./FINAL-COMPLETION-REPORT.md) — All tasks complete
 - [Sprint 1 Status](./docs/SPRINT1-DATA-COLLECTION-STATUS.md) — Data collection status
 - [Scripts README](./scripts/README.md) — Script documentation
@@ -73,20 +100,20 @@ ARIA/
 - [Project Charter](./docs/phase0/project-initiation/01-project-charter.md) — Project overview
 
 ### 🚀 What to Do Next
-1. **Review Phase 1 deliverables** in [docs/PHASE1-COMPLETE.md](./docs/PHASE1-COMPLETE.md)
-2. **Run the data pipeline** with `python scripts/pipeline_orchestrator.py`
-3. **Explore the data** with Jupyter notebook `notebooks/01_EDA_Comprehensive.ipynb`
-4. **Review reports** in `reports/` and `docs/` directories
-5. **Start Phase 2** — ML Model Development & API Integration
+1. **Review Phase 2 ML Models** in [docs/PHASE2-ML-MODELS.md](./docs/PHASE2-ML-MODELS.md) ⭐ NEW!
+2. **Train the models** — Run scripts in `ml_scripts/` directory
+3. **Review Phase 1 deliverables** in [docs/PHASE1-COMPLETE.md](./docs/PHASE1-COMPLETE.md)
+4. **Explore the data** with Jupyter notebook `notebooks/01_EDA_Comprehensive.ipynb`
+5. **Start Phase 3** — FastAPI Service, Deployment & Integration
 
 ---
 
 ## 📊 Project Status
 
-### Overall Progress — **30% Complete**
+### Overall Progress — **50% Complete**
 
 ```
-Progress: ██████░░░░░░░░░░░░░░ 30%
+Progress: ██████████░░░░░░░░░░ 50%
 ```
 
 ### ✅ Phase 0: Project Initiation (Week 1) — **COMPLETE**
@@ -98,6 +125,22 @@ Progress: ██████░░░░░░░░░░░░░░ 30%
 ### ✅ Phase 1: Data Collection & Preprocessing (Weeks 2-4) — **COMPLETE**
 
 **Data Collected: 140,000+ Records**
+
+### ✅ Phase 2: Machine Learning Models (Weeks 5-8) — **COMPLETE** 🎉
+
+**5 Production ML Models:**
+- ✅ **Triage Classifier** (XGBoost + BERT) — Emergency severity classification
+- ✅ **ETA Predictor** (XGBoost Regressor) — Ambulance arrival time prediction
+- ✅ **Hospital Ranker** (LambdaMART) — Hospital suitability ranking
+- ✅ **Resource Predictor** (LSTM + Prophet) — Time-series demand forecasting
+- ✅ **Hotspot Predictor** (DBSCAN + Isolation Forest) — Incident hotspot detection
+
+**Model Statistics:**
+- ~3,500 lines of production ML code
+- 8 different ML algorithms integrated
+- 50+ engineered features
+- Complete evaluation pipelines with visualizations
+- Model persistence and metadata tracking
 - ✅ **Hospitals:** 63,000+ records from 6 sources
 - ✅ **Ambulances:** 25,000+ records with complete fleet data
 - ✅ **Blood Banks:** 2,500+ records with inventory

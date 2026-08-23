@@ -1,0 +1,94 @@
+{
+  "model_type": "Triage Classifier (XGBoost + BERT Ensemble)",
+  "training_date": "2026-08-23T15:53:05.020093",
+  "train_samples": 70000,
+  "val_samples": 15000,
+  "test_samples": 15000,
+  "classes": [
+    "CRITICAL",
+    "LOW",
+    "MODERATE"
+  ],
+  "training_results": {
+    "xgboost": {
+      "accuracy": 1.0,
+      "f1_macro": 1.0,
+      "precision_macro": 1.0,
+      "recall_macro": 1.0
+    }
+  },
+  "test_results": {
+    "accuracy": 0.9999333333333333,
+    "precision": 0.9999365200279312,
+    "recall": 0.9998518518518518,
+    "f1_score": 0.9998941664527594,
+    "roc_auc": 0.9999999934879935,
+    "confusion_matrix": [
+      [
+        2249,
+        0,
+        1
+      ],
+      [
+        0,
+        7500,
+        0
+      ],
+      [
+        0,
+        0,
+        5250
+      ]
+    ],
+    "classification_report": {
+      "CRITICAL": {
+        "precision": 1.0,
+        "recall": 0.9995555555555555,
+        "f1-score": 0.9997777283840854,
+        "support": 2250.0
+      },
+      "LOW": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 7500.0
+      },
+      "MODERATE": {
+        "precision": 0.9998095600837935,
+        "recall": 1.0,
+        "f1-score": 0.999904770974193,
+        "support": 5250.0
+      },
+      "accuracy": 0.9999333333333333,
+      "macro avg": {
+        "precision": 0.9999365200279312,
+        "recall": 0.9998518518518518,
+        "f1-score": 0.9998941664527594,
+        "support": 15000.0
+      },
+      "weighted avg": {
+        "precision": 0.9999333460293277,
+        "recall": 0.9999333333333333,
+        "f1-score": 0.9999333290985805,
+        "support": 15000.0
+      }
+    }
+  },
+  "ensemble_weights": {
+    "xgboost": 0.6,
+    "bert": 0.4,
+    "confidence_threshold": 0.7
+  },
+  "xgboost_params": {
+    "n_estimators": 300,
+    "max_depth": 8,
+    "learning_rate": 0.1,
+    "subsample": 0.8,
+    "colsample_bytree": 0.8,
+    "objective": "multi:softprob",
+    "num_class": 3,
+    "eval_metric": "mlogloss",
+    "random_state": 42
+  },
+  "bert_params": null
+}
