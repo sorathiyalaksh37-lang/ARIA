@@ -1,0 +1,16 @@
+2026-08-23 14:29:41,376 - INFO - ======================================================================
+2026-08-23 14:29:41,376 - INFO - ARIA BLOOD BANK DATA COLLECTION STARTED
+2026-08-23 14:29:41,376 - INFO - ======================================================================
+2026-08-23 14:29:41,376 - INFO - Generating 2500 synthetic blood bank records...
+2026-08-23 14:29:41,453 - INFO - Generated 2479 synthetic blood bank records
+2026-08-23 14:29:41,453 - INFO - Saving 2479 blood banks to /Users/lakshsorathiya/ARIA/data/raw/blood_banks_raw.csv...
+2026-08-23 14:29:41,471 - INFO - Successfully saved 2479 blood banks to /Users/lakshsorathiya/ARIA/data/raw/blood_banks_raw.csv
+2026-08-23 14:29:41,471 - INFO - Generating summary report...
+2026-08-23 14:29:41,478 - INFO - Summary report saved to /Users/lakshsorathiya/ARIA/data/raw/blood_banks_summary.txt
+2026-08-23 14:29:41,478 - INFO - ======================================================================
+2026-08-23 14:29:41,478 - INFO - BLOOD BANK DATA COLLECTION COMPLETED SUCCESSFULLY
+2026-08-23 14:29:41,478 - INFO - Total Blood Banks: 2,479
+2026-08-23 14:29:41,478 - INFO - Time Elapsed: 0.10 seconds
+2026-08-23 14:29:41,478 - INFO - Output File: /Users/lakshsorathiya/ARIA/data/raw/blood_banks_raw.csv
+2026-08-23 14:29:41,478 - INFO - Summary Report: /Users/lakshsorathiya/ARIA/data/raw/blood_banks_summary.txt
+2026-08-23 14:29:41,478 - INFO - ======================================================================
