@@ -1,0 +1,42 @@
+2026-08-24 16:30:42,787 - __main__ - INFO - ======================================================================
+2026-08-24 16:30:42,787 - __main__ - INFO - ARIA RESOURCE PREDICTOR - PRODUCTION TRAINING
+2026-08-24 16:30:42,787 - __main__ - INFO - ======================================================================
+2026-08-24 16:30:42,787 - __main__ - INFO - Start time: 2026-08-24 16:30:42
+2026-08-24 16:30:42,787 - __main__ - ERROR - TensorFlow is required. Install with: pip install tensorflow
+2026-08-24 16:30:42,787 - __main__ - INFO - Continuing without LSTM...
+2026-08-24 16:30:42,787 - __main__ - ERROR - Prophet is required. Install with: pip install prophet
+2026-08-24 16:30:42,787 - __main__ - INFO - Continuing without Prophet...
+2026-08-24 16:30:42,787 - __main__ - ERROR - At least one model (TensorFlow or Prophet) must be available!
+2026-08-24 16:32:09,808 - INFO - ======================================================================
+2026-08-24 16:32:09,808 - INFO - ARIA RESOURCE PREDICTOR TRAINING
+2026-08-24 16:32:09,808 - INFO - ======================================================================
+2026-08-24 16:32:09,808 - INFO - Generating 1095 days of data...
+2026-08-24 16:32:09,833 - INFO - Generated 26,280 records. Occupancy: 310-483 (mean: 388.8)
+2026-08-24 16:32:09,845 - INFO - 
+Data splits: Train=23652, Val=2628, Test=0
+2026-08-24 16:32:09,847 - INFO - Training Gradient Boosting...
+2026-08-24 16:33:01,459 - INFO - Training Random Forest...
+2026-08-24 16:33:07,473 - INFO - Validation - MAE: 6.09, RMSE: 7.69
+2026-08-24 16:38:59,094 - INFO - ======================================================================
+2026-08-24 16:38:59,094 - INFO - ARIA RESOURCE PREDICTOR TRAINING
+2026-08-24 16:38:59,094 - INFO - ======================================================================
+2026-08-24 16:38:59,094 - INFO - Generating 26280 hours (1095 days) of data...
+2026-08-24 16:38:59,122 - INFO - Generated 26,280 records. Occupancy: 311-480 (mean: 388.7)
+2026-08-24 16:38:59,133 - INFO - 
+Data splits: Train=21024, Val=2628, Test=2628
+2026-08-24 16:38:59,136 - INFO - Training Gradient Boosting...
+2026-08-24 16:39:44,436 - INFO - Training Random Forest...
+2026-08-24 16:39:49,374 - INFO - Validation - MAE: 5.87, RMSE: 7.39
+2026-08-24 16:39:49,420 - INFO - 
+Test Results:
+2026-08-24 16:39:49,420 - INFO -   MAE:  6.17 beds
+2026-08-24 16:39:49,420 - INFO -   RMSE: 7.80 beds
+2026-08-24 16:39:49,420 - INFO -   MAPE: 1.51%
+2026-08-24 16:39:49,420 - INFO -   R²:   0.8931
+2026-08-24 16:39:49,843 - INFO - Saved visualization to /Users/lakshsorathiya/ARIA/reports/resource_predictor_report.png
+2026-08-24 16:39:49,905 - INFO - 
+======================================================================
+2026-08-24 16:39:49,905 - INFO - TRAINING COMPLETE in 50.8s (0.8 min)
+2026-08-24 16:39:49,905 - INFO - MAE: 6.17 beds ⚠️
+2026-08-24 16:39:49,905 - INFO - RMSE: 7.80 beds ✅
+2026-08-24 16:39:49,905 - INFO - ======================================================================

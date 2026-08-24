@@ -323,12 +323,8 @@ class ETAPredictorModel:
         logger.info("Training main model...")
         self.model = xgb.XGBRegressor(**self.params)
         
-        eval_set = [(X_train_features, y_train), (X_val_features, y_val)]
-        
         self.model.fit(
             X_train_features, y_train,
-            eval_set=eval_set,
-            early_stopping_rounds=50,
             verbose=False
         )
         

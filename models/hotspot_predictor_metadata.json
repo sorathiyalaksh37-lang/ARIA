@@ -1,0 +1,189 @@
+{
+  "model_type": "Hotspot Predictor (DBSCAN + Isolation Forest)",
+  "training_date": "2026-08-24T16:55:10.570254",
+  "n_incidents": 100000,
+  "training_results": {
+    "hotspot_detection": {
+      "n_clusters": 8,
+      "n_noise": 0,
+      "noise_ratio": 0.0,
+      "silhouette_score": 0.9789686754496445,
+      "calinski_harabasz_score": 409596007.9260621
+    },
+    "anomaly_detection": {
+      "n_anomalies": 10000,
+      "n_normal": 90000,
+      "anomaly_ratio": 0.1,
+      "mean_score": 0.038255303123273264,
+      "std_score": 0.027842118254640235,
+      "min_score": -0.08554161206942157,
+      "max_score": 0.09924773157787425
+    }
+  },
+  "evaluation_results": {
+    "n_hotspots": 8,
+    "n_in_hotspots": 100000,
+    "hotspot_coverage": 1.0,
+    "n_anomalies": 10000,
+    "anomaly_ratio": 0.1,
+    "hotspot_precision": 1.0,
+    "hotspot_recall": 1.0,
+    "hotspot_f1": 1.0
+  },
+  "dbscan_params": {
+    "eps": 0.5,
+    "min_samples": 10,
+    "metric": "euclidean"
+  },
+  "isolation_forest_params": {
+    "n_estimators": 100,
+    "contamination": 0.1,
+    "random_state": 42
+  },
+  "hotspot_info": {
+    "0": {
+      "size": 12599,
+      "center_lat": 23.022565446860842,
+      "center_lon": 72.57141148678477,
+      "severity_distribution": {
+        "LOW": 6347,
+        "MODERATE": 4336,
+        "CRITICAL": 1916
+      },
+      "avg_severity": 1.648305421065164,
+      "incident_types": {
+        "MEDICAL": 10211,
+        "FIRE": 1160,
+        "ACCIDENT": 806,
+        "VIOLENCE": 377,
+        "DISASTER": 45
+      }
+    },
+    "1": {
+      "size": 12401,
+      "center_lat": 13.082701147729978,
+      "center_lon": 80.27064150495914,
+      "severity_distribution": {
+        "LOW": 6215,
+        "MODERATE": 4331,
+        "CRITICAL": 1855
+      },
+      "avg_severity": 1.648415450366906,
+      "incident_types": {
+        "MEDICAL": 10054,
+        "FIRE": 1117,
+        "ACCIDENT": 773,
+        "VIOLENCE": 404,
+        "DISASTER": 53
+      }
+    },
+    "2": {
+      "size": 12618,
+      "center_lat": 28.70389331336198,
+      "center_lon": 77.10233682049433,
+      "severity_distribution": {
+        "LOW": 6347,
+        "MODERATE": 4380,
+        "CRITICAL": 1891
+      },
+      "avg_severity": 1.646853701061975,
+      "incident_types": {
+        "MEDICAL": 10163,
+        "FIRE": 1217,
+        "ACCIDENT": 790,
+        "VIOLENCE": 379,
+        "DISASTER": 69
+      }
+    },
+    "3": {
+      "size": 12444,
+      "center_lat": 12.971677440774604,
+      "center_lon": 77.59484449445486,
+      "severity_distribution": {
+        "LOW": 6288,
+        "MODERATE": 4372,
+        "CRITICAL": 1784
+      },
+      "avg_severity": 1.6380585020893603,
+      "incident_types": {
+        "MEDICAL": 10062,
+        "FIRE": 1191,
+        "ACCIDENT": 694,
+        "VIOLENCE": 424,
+        "DISASTER": 73
+      }
+    },
+    "4": {
+      "size": 12377,
+      "center_lat": 18.519785917023526,
+      "center_lon": 73.85698805235502,
+      "severity_distribution": {
+        "LOW": 6154,
+        "MODERATE": 4354,
+        "CRITICAL": 1869
+      },
+      "avg_severity": 1.653793326331098,
+      "incident_types": {
+        "MEDICAL": 10029,
+        "FIRE": 1138,
+        "ACCIDENT": 735,
+        "VIOLENCE": 401,
+        "DISASTER": 74
+      }
+    },
+    "5": {
+      "size": 12362,
+      "center_lat": 17.385171439492044,
+      "center_lon": 78.48661030682742,
+      "severity_distribution": {
+        "LOW": 6136,
+        "MODERATE": 4396,
+        "CRITICAL": 1830
+      },
+      "avg_severity": 1.6516744863290729,
+      "incident_types": {
+        "MEDICAL": 10019,
+        "FIRE": 1139,
+        "ACCIDENT": 719,
+        "VIOLENCE": 415,
+        "DISASTER": 70
+      }
+    },
+    "6": {
+      "size": 12658,
+      "center_lat": 19.07568531474157,
+      "center_lon": 72.87760134918666,
+      "severity_distribution": {
+        "LOW": 6265,
+        "MODERATE": 4488,
+        "CRITICAL": 1905
+      },
+      "avg_severity": 1.6555537999683994,
+      "incident_types": {
+        "MEDICAL": 10216,
+        "FIRE": 1231,
+        "ACCIDENT": 729,
+        "VIOLENCE": 418,
+        "DISASTER": 64
+      }
+    },
+    "7": {
+      "size": 12541,
+      "center_lat": 22.57258165489199,
+      "center_lon": 88.36379756741874,
+      "severity_distribution": {
+        "LOW": 6248,
+        "MODERATE": 4343,
+        "CRITICAL": 1950
+      },
+      "avg_severity": 1.6572841081253489,
+      "incident_types": {
+        "MEDICAL": 10074,
+        "FIRE": 1226,
+        "ACCIDENT": 766,
+        "VIOLENCE": 402,
+        "DISASTER": 73
+      }
+    }
+  }
+}

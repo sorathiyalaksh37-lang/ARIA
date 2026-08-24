@@ -1,0 +1,43 @@
+{
+  "model_type": "Resource Predictor (GradientBoosting + RandomForest)",
+  "training_date": "2026-08-24T16:39:49.905478",
+  "val_results": {
+    "mae": 5.874944675730605,
+    "rmse": 7.392082945737292
+  },
+  "test_results": {
+    "mae": 6.173056446904598,
+    "rmse": 7.800260088677077,
+    "mape": 1.5055516054726503,
+    "r2": 0.8931457313823646
+  },
+  "n_features": 26,
+  "feature_names": [
+    "hour_sin",
+    "hour_cos",
+    "day_sin",
+    "day_cos",
+    "month_sin",
+    "month_cos",
+    "occupancy_lag_1h",
+    "occupancy_lag_6h",
+    "occupancy_lag_12h",
+    "occupancy_lag_24h",
+    "occupancy_mean_6h",
+    "occupancy_mean_12h",
+    "occupancy_mean_24h",
+    "occupancy_std_6h",
+    "occupancy_std_12h",
+    "occupancy_std_24h",
+    "occupancy_min_24h",
+    "occupancy_max_24h",
+    "incident_count",
+    "temperature",
+    "rain",
+    "is_weekend",
+    "is_rush_hour",
+    "weekend_x_hour",
+    "incident_x_rain",
+    "temp_extreme"
+  ]
+}

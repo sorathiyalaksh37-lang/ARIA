@@ -1,0 +1,28 @@
+{
+  "features": [
+    "distance_km",
+    "log_distance",
+    "distance_squared",
+    "hour_sin",
+    "hour_cos",
+    "day_sin",
+    "day_cos",
+    "is_rush_hour",
+    "is_weekend",
+    "traffic_level_encoded",
+    "weather_encoded",
+    "road_type_encoded",
+    "ambulance_type_encoded",
+    "speed_limit",
+    "num_signals",
+    "turns_count",
+    "driver_experience",
+    "driver_factor",
+    "distance_x_traffic",
+    "distance_x_weather",
+    "signals_per_km",
+    "turns_per_km",
+    "complexity_score"
+  ],
+  "num_features": 23
+}

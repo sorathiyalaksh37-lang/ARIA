@@ -108,6 +108,28 @@ class HotspotDataLoader:
         df = pd.read_csv(self.data_path)
         logger.info(f"Loaded {len(df):,} records")
         
+        # Parse timestamp and extract hour if not present
+        if 'timestamp' in df.columns and 'hour' not in df.columns:
+            df['timestamp'] = pd.to_datetime(df['timestamp'])
+            df['hour'] = df['timestamp'].dt.hour
+            
+        # Ensure day_of_week exists
+        if 'day_of_week' not in df.columns and 'timestamp' in df.columns:
+            df['day_of_week'] = df['timestamp'].dt.dayofweek
+            
+        # Create is_weekend if not present
+        if 'is_weekend' not in df.columns and 'day_of_week' in df.columns:
+            # Map day names to numeric if needed
+            day_mapping = {'MON': 0, 'TUE': 1, 'WED': 2, 'THU': 3, 'FRI': 4, 'SAT': 5, 'SUN': 6}
+            if df['day_of_week'].dtype == 'object':
+                df['day_of_week'] = df['day_of_week'].map(day_mapping)
+            df['is_weekend'] = (df['day_of_week'] >= 5).astype(int)
+            
+        # Ensure severity_encoded exists
+        if 'severity_encoded' not in df.columns and 'severity' in df.columns:
+            severity_map = {'LOW': 1, 'MODERATE': 2, 'HIGH': 2, 'CRITICAL': 3}
+            df['severity_encoded'] = df['severity'].map(severity_map).fillna(2)
+        
         return df
     
     def _generate_synthetic_data(self, n_records: int = 10000) -> pd.DataFrame:
@@ -626,9 +648,12 @@ def save_model(model: HotspotPredictor, metadata: Dict, save_dir: Path):
     # Save Isolation Forest model
     joblib.dump(model.anomaly_detector, save_dir / 'hotspot_isolation_forest.pkl')
     
-    # Save hotspot info
+    # Save hotspot info - convert keys to strings for JSON serialization
+    hotspot_info = model.get_hotspot_info()
+    hotspot_info_serializable = {str(k): v for k, v in hotspot_info.items()}
+    
     with open(save_dir / 'hotspot_info.json', 'w') as f:
-        json.dump(model.get_hotspot_info(), f, indent=2)
+        json.dump(hotspot_info_serializable, f, indent=2, default=str)
     
     # Save metadata
     with open(save_dir / 'hotspot_predictor_metadata.json', 'w') as f:
@@ -666,15 +691,25 @@ def main():
         create_visualizations(model, df, REPORTS_DIR)
         
         # Save model
+        # Convert all nested dict keys to strings for JSON serialization
+        def convert_keys_to_str(obj):
+            """Recursively convert dict keys to strings."""
+            if isinstance(obj, dict):
+                return {str(k): convert_keys_to_str(v) for k, v in obj.items()}
+            elif isinstance(obj, list):
+                return [convert_keys_to_str(item) for item in obj]
+            else:
+                return obj
+        
         metadata = {
             'model_type': 'Hotspot Predictor (DBSCAN + Isolation Forest)',
             'training_date': datetime.now().isoformat(),
             'n_incidents': len(df),
-            'training_results': training_results,
-            'evaluation_results': evaluation_results,
+            'training_results': convert_keys_to_str(training_results),
+            'evaluation_results': convert_keys_to_str(evaluation_results),
             'dbscan_params': DBSCAN_PARAMS,
             'isolation_forest_params': ISOLATION_FOREST_PARAMS,
-            'hotspot_info': model.get_hotspot_info()
+            'hotspot_info': convert_keys_to_str(model.get_hotspot_info())
         }
         
         save_model(model, metadata, MODELS_DIR)

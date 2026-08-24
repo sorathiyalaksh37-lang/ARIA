@@ -1,0 +1,61 @@
+{
+  "model_type": "ETA Predictor (XGBoost Regressor)",
+  "training_date": "2026-08-24T16:41:28.075984",
+  "train_samples": 32000,
+  "val_samples": 8000,
+  "test_samples": 10000,
+  "training_results": {
+    "mae": 1.3736411016967194,
+    "rmse": 2.0423218562354846,
+    "mape": 9.40387105318987,
+    "r2_score": 0.9848325332762494
+  },
+  "test_results": {
+    "mae": 1.315694713931644,
+    "rmse": 1.9628802081025822,
+    "mape": 9.267292613033282,
+    "r2_score": 0.9858341055414004,
+    "error_stats": {
+      "mean": -0.028918159930223283,
+      "std": 1.9626671779461455,
+      "min": -13.795605703368622,
+      "max": 11.665562112844611,
+      "median": -0.016129059459766726
+    }
+  },
+  "xgboost_params": {
+    "n_estimators": 300,
+    "max_depth": 10,
+    "learning_rate": 0.1,
+    "subsample": 0.8,
+    "colsample_bytree": 0.8,
+    "objective": "reg:squarederror",
+    "random_state": 42
+  },
+  "feature_names": [
+    "distance_km",
+    "log_distance",
+    "distance_squared",
+    "hour_sin",
+    "hour_cos",
+    "day_sin",
+    "day_cos",
+    "is_rush_hour",
+    "is_weekend",
+    "traffic_level_encoded",
+    "weather_encoded",
+    "road_type_encoded",
+    "ambulance_type_encoded",
+    "speed_limit",
+    "num_signals",
+    "turns_count",
+    "driver_experience",
+    "driver_factor",
+    "distance_x_traffic",
+    "distance_x_weather",
+    "signals_per_km",
+    "turns_per_km",
+    "complexity_score"
+  ],
+  "num_features": 23
+}
