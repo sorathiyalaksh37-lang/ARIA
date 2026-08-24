@@ -55,8 +55,13 @@ async def lifespan(app: FastAPI):
         
         # TODO: Load ML models
         logger.info("🤖 Loading ML models...")
-        # await load_ml_models()
-        logger.info("✅ ML models loaded")
+        from app.services.ml_service import ml_service
+        try:
+            await ml_service.load_all_models()
+            logger.info("✅ ML models loaded")
+        except Exception as e:
+            logger.error(f"⚠️ ML models failed to load: {e}")
+            # Continue anyway - some features will be unavailable
         
         # TODO: Initialize Redis
         logger.info("🔴 Connecting to Redis...")
