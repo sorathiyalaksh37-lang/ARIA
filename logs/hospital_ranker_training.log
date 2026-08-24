@@ -1,0 +1,68 @@
+2026-08-24 16:09:10,509 - __main__ - INFO - ======================================================================
+2026-08-24 16:09:10,509 - __main__ - INFO - ARIA HOSPITAL RANKER TRAINING
+2026-08-24 16:09:10,509 - __main__ - INFO - ======================================================================
+2026-08-24 16:09:10,509 - __main__ - INFO - Start time: 2026-08-24 16:09:10
+2026-08-24 16:09:10,509 - __main__ - INFO - Loading hospitals from /Users/lakshsorathiya/ARIA/data/raw/hospitals_raw.csv
+2026-08-24 16:09:10,635 - __main__ - INFO - Loaded 63,286 hospitals
+2026-08-24 16:09:10,656 - __main__ - INFO - After cleaning: 59,047 hospitals
+2026-08-24 16:09:10,656 - __main__ - INFO - Generating 5,000 emergency queries...
+2026-08-24 16:19:36,922 - __main__ - INFO - ======================================================================
+2026-08-24 16:19:36,922 - __main__ - INFO - ARIA HOSPITAL RANKER TRAINING
+2026-08-24 16:19:36,922 - __main__ - INFO - ======================================================================
+2026-08-24 16:19:36,922 - __main__ - INFO - Start time: 2026-08-24 16:19:36
+2026-08-24 16:19:36,922 - __main__ - INFO - Loading hospitals from /Users/lakshsorathiya/ARIA/data/raw/hospitals_raw.csv
+2026-08-24 16:19:37,097 - __main__ - INFO - Loaded 63,286 hospitals
+2026-08-24 16:19:37,121 - __main__ - INFO - Sampled 1000 hospitals for training
+2026-08-24 16:19:37,123 - __main__ - INFO - After cleaning: 1,000 hospitals
+2026-08-24 16:19:37,123 - __main__ - INFO - Generating 1,000 emergency queries...
+2026-08-24 16:20:16,416 - __main__ - INFO - Generated 1,000,000 query-hospital pairs
+2026-08-24 16:20:16,424 - __main__ - INFO - Unique queries: 1,000
+2026-08-24 16:20:16,429 - __main__ - INFO - Avg hospitals per query: 1000.0
+2026-08-24 16:20:16,614 - __main__ - INFO - 
+Data splits:
+2026-08-24 16:20:16,614 - __main__ - INFO -   Train: 800,000 pairs (800 queries)
+2026-08-24 16:20:16,614 - __main__ - INFO -   Val:   100,000 pairs (100 queries)
+2026-08-24 16:20:16,614 - __main__ - INFO -   Test:  100,000 pairs (100 queries)
+2026-08-24 16:20:16,615 - __main__ - INFO - Training Hospital Ranker...
+2026-08-24 16:20:16,948 - __main__ - INFO - Feature matrix shape: (800000, 26)
+2026-08-24 16:20:16,948 - __main__ - INFO - Features: 26
+2026-08-24 16:20:16,954 - __main__ - INFO - Train queries: 800
+2026-08-24 16:20:16,955 - __main__ - INFO - Val queries: 100
+2026-08-24 16:20:19,443 - __main__ - INFO - 
+Validation Metrics:
+2026-08-24 16:20:19,443 - __main__ - INFO -   NDCG@10: 0.9972 ± 0.0208
+2026-08-24 16:20:19,443 - __main__ - INFO -   MAP@10:  0.3200
+2026-08-24 16:20:19,452 - __main__ - INFO - ======================================================================
+2026-08-24 16:20:19,452 - __main__ - INFO - MODEL EVALUATION
+2026-08-24 16:20:19,452 - __main__ - INFO - ======================================================================
+2026-08-24 16:20:19,535 - __main__ - INFO - 
+Test Set Metrics (100 queries):
+2026-08-24 16:20:19,535 - __main__ - INFO -   NDCG@5:  0.9908
+2026-08-24 16:20:19,535 - __main__ - INFO -   NDCG@10: 0.9919
+2026-08-24 16:20:19,535 - __main__ - INFO -   NDCG@20: 0.9965
+2026-08-24 16:20:19,535 - __main__ - INFO -   MAP@10:  0.2500
+2026-08-24 16:20:19,536 - __main__ - INFO - Creating visualizations...
+2026-08-24 16:20:22,038 - __main__ - INFO - Saved visualizations to /Users/lakshsorathiya/ARIA/reports/hospital_ranker_evaluation.png
+2026-08-24 16:20:22,040 - __main__ - INFO - 
+Top 10 Important Features:
+2026-08-24 16:20:22,040 - __main__ - INFO -   emergency_dept: 10653.16
+2026-08-24 16:20:22,040 - __main__ - INFO -   hospital_score: 9139.12
+2026-08-24 16:20:22,040 - __main__ - INFO -   distance_km: 1190.34
+2026-08-24 16:20:22,040 - __main__ - INFO -   rating_x_distance: 907.08
+2026-08-24 16:20:22,040 - __main__ - INFO -   log_distance: 527.66
+2026-08-24 16:20:22,040 - __main__ - INFO -   severity_encoded: 276.46
+2026-08-24 16:20:22,040 - __main__ - INFO -   distance_x_severity: 248.16
+2026-08-24 16:20:22,040 - __main__ - INFO -   hour_sin: 69.07
+2026-08-24 16:20:22,040 - __main__ - INFO -   available_beds: 60.47
+2026-08-24 16:20:22,040 - __main__ - INFO -   hour_cos: 42.53
+2026-08-24 16:20:22,040 - __main__ - INFO - Saving model artifacts...
+2026-08-24 16:20:22,042 - __main__ - INFO - Model artifacts saved to /Users/lakshsorathiya/ARIA/models
+2026-08-24 16:20:22,043 - __main__ - INFO - ======================================================================
+2026-08-24 16:20:22,043 - __main__ - INFO - TRAINING COMPLETE
+2026-08-24 16:20:22,043 - __main__ - INFO - ======================================================================
+2026-08-24 16:20:22,043 - __main__ - INFO - Duration: 45.12 seconds
+2026-08-24 16:20:22,043 - __main__ - INFO - Final Test NDCG@10: 0.9919
+2026-08-24 16:20:22,043 - __main__ - INFO - ✅ Target NDCG@10 (>0.8) ACHIEVED!
+2026-08-24 16:20:22,043 - __main__ - INFO - 
+Model saved to: /Users/lakshsorathiya/ARIA/models
+2026-08-24 16:20:22,043 - __main__ - INFO - ======================================================================

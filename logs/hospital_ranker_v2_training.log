@@ -1,0 +1,11 @@
+2026-08-24 16:06:44,565 - __main__ - INFO - ======================================================================
+2026-08-24 16:06:44,565 - __main__ - INFO - ARIA HOSPITAL RANKER - PRODUCTION TRAINING
+2026-08-24 16:06:44,565 - __main__ - INFO - ======================================================================
+2026-08-24 16:06:44,565 - __main__ - INFO - Start time: 2026-08-24 16:06:44
+2026-08-24 16:06:44,565 - __main__ - INFO - Loading hospitals from /Users/lakshsorathiya/ARIA/data/raw/hospitals_raw.csv
+2026-08-24 16:06:44,689 - __main__ - INFO - Loaded 63,286 hospitals
+2026-08-24 16:06:44,718 - __main__ - INFO - After cleaning: 59,047 hospitals
+2026-08-24 16:06:44,718 - __main__ - INFO - Loading incidents from /Users/lakshsorathiya/ARIA/data/processed/incidents_processed.csv
+2026-08-24 16:06:44,871 - __main__ - INFO - Loaded 100,000 incidents
+2026-08-24 16:06:44,902 - __main__ - INFO - After cleaning: 100,000 incidents
+2026-08-24 16:06:44,902 - __main__ - INFO - Generating pairwise data for 10000 incidents...

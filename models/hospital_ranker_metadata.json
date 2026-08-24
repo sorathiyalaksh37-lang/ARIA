@@ -1,0 +1,63 @@
+{
+  "model_type": "Hospital Ranker (LambdaMART)",
+  "training_date": "2026-08-24T16:20:22.040879",
+  "train_queries": 800,
+  "val_queries": 100,
+  "test_queries": 100,
+  "training_results": {
+    "ndcg@10": 0.9971634639685866,
+    "map@10": 0.32,
+    "ndcg_std": 0.02083947413055172
+  },
+  "test_results": {
+    "ndcg@5": 0.9907559108265748,
+    "ndcg@10": 0.991893347377234,
+    "ndcg@20": 0.9964957279811807,
+    "map@10": 0.25,
+    "num_queries": 100
+  },
+  "lgbm_params": {
+    "objective": "lambdarank",
+    "metric": "ndcg",
+    "ndcg_eval_at": [
+      5,
+      10,
+      20
+    ],
+    "num_leaves": 31,
+    "learning_rate": 0.05,
+    "feature_fraction": 0.8,
+    "bagging_fraction": 0.8,
+    "bagging_freq": 5,
+    "verbose": -1,
+    "num_boost_round": 500
+  },
+  "feature_names": [
+    "distance_km",
+    "log_distance",
+    "distance_squared",
+    "is_nearby",
+    "available_beds",
+    "icu_available",
+    "bed_utilization",
+    "icu_utilization",
+    "has_available_beds",
+    "has_icu_available",
+    "trauma_center",
+    "emergency_dept",
+    "rating",
+    "rating_normalized",
+    "wait_time_avg",
+    "wait_time_normalized",
+    "hour_sin",
+    "hour_cos",
+    "is_night",
+    "severity_encoded",
+    "specialty_encoded",
+    "distance_x_severity",
+    "distance_x_beds",
+    "rating_x_distance",
+    "critical_care_score",
+    "hospital_score"
+  ]
+}

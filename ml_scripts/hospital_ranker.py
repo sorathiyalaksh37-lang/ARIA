@@ -50,7 +50,8 @@ warnings.filterwarnings('ignore')
 # ============================================================================
 
 BASE_DIR = Path(__file__).parent.parent
-DATA_DIR = BASE_DIR / "data" / "raw"
+DATA_DIR_RAW = BASE_DIR / "data" / "raw"
+DATA_DIR_PROCESSED = BASE_DIR / "data" / "processed"
 MODELS_DIR = BASE_DIR / "models"
 REPORTS_DIR = BASE_DIR / "reports"
 LOGS_DIR = BASE_DIR / "logs"
@@ -107,8 +108,35 @@ class HospitalRankingDataGenerator:
             logger.warning("Hospital file not found. Generating synthetic hospitals.")
             return self._generate_synthetic_hospitals()
         
-        df = pd.read_csv(self.hospitals_file)
+        df = pd.read_csv(self.hospitals_file, low_memory=False)
         logger.info(f"Loaded {len(df):,} hospitals")
+        
+        # Clean real data
+        df = df.dropna(subset=['latitude', 'longitude'])
+        df['latitude'] = pd.to_numeric(df['latitude'], errors='coerce')
+        df['longitude'] = pd.to_numeric(df['longitude'], errors='coerce')
+        df = df[(df['latitude'].between(-90, 90)) & (df['longitude'].between(-90, 90))]
+        
+        # Sample hospitals for faster training (take 1000 random hospitals)
+        if len(df) > 1000:
+            df = df.sample(n=1000, random_state=42)
+            logger.info(f"Sampled {len(df)} hospitals for training")
+        
+        # Convert beds columns
+        df['total_beds'] = pd.to_numeric(df.get('beds', 0), errors='coerce').fillna(50)
+        df['icu_beds'] = pd.to_numeric(df.get('icu_beds', 0), errors='coerce').fillna(5)
+        
+        # Create emergency/trauma flags
+        df['emergency_dept'] = df.get('emergency_services', 'Unknown').astype(str).str.lower().isin(['yes', 'true', '1']).astype(int)
+        df['trauma_center'] = 0  # Default, can be enhanced
+        df['rating'] = 3.5  # Default rating
+        df['wait_time_avg'] = 60.0  # Default wait time
+        
+        # Calculate available beds (assume 30% available)
+        df['available_beds'] = (df['total_beds'] * 0.3).astype(int)
+        df['icu_available'] = (df['icu_beds'] * 0.3).astype(int)
+        
+        logger.info(f"After cleaning: {len(df):,} hospitals")
         
         return df
     
@@ -661,8 +689,8 @@ def main():
     try:
         # Generate data
         generator = HospitalRankingDataGenerator(
-            hospitals_file=DATA_DIR / 'hospitals.csv',
-            n_queries=10000
+            hospitals_file=DATA_DIR_RAW / 'hospitals_raw.csv',
+            n_queries=1000  # Reduced to 1K for faster training
         )
         
         hospitals = generator.load_hospitals()
