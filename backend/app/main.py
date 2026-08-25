@@ -297,17 +297,18 @@ async def api_health():
 # ============================================================================
 
 # Import routers
-from app.api.v1 import incidents, auth, websocket
+from app.api.v1 import incidents, auth, websocket, hospitals, ambulances, dashboard
 
 # Register API v1 routers
-app.include_router(auth.router, prefix="/api/v1/auth", tags=["Authentication"])
-app.include_router(incidents.router, prefix="/api/v1/incidents", tags=["Incidents"])
+app.include_router(auth.router, prefix="/api/v1", tags=["Authentication"])
+app.include_router(incidents.router, prefix="/api/v1", tags=["Incidents"])
+app.include_router(hospitals.router, prefix="/api/v1", tags=["Hospitals"])
+app.include_router(ambulances.router, prefix="/api/v1", tags=["Ambulances"])
+app.include_router(dashboard.router, prefix="/api/v1", tags=["Dashboard"])
 app.include_router(websocket.router, prefix="/api/v1", tags=["WebSocket"])
 
-# app.include_router(hospitals.router, prefix="/api/v1/hospitals", tags=["Hospitals"])
-# app.include_router(ambulances.router, prefix="/api/v1/ambulances", tags=["Ambulances"])
+# TODO: Additional routers
 # app.include_router(blood_banks.router, prefix="/api/v1/blood-banks", tags=["Blood Banks"])
-# app.include_router(dashboard.router, prefix="/api/v1/dashboard", tags=["Dashboard"])
 # app.include_router(admin.router, prefix="/api/v1/admin", tags=["Admin"])
 
 
