@@ -8,6 +8,8 @@ import { Helmet } from 'react-helmet-async';
 import { Zap, Eye, EyeOff } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { useAuth } from '../../hooks/useAuth';
+import { useAppDispatch } from '../../store';
+import { login as loginAction } from '../../store/slices/authSlice';
 import { LoginFormData } from '../../types';
 
 const schema = yup.object({
@@ -31,9 +33,11 @@ const LoginPage: React.FC = () => {
     formState: { errors },
   } = useForm<LoginFormData>({ resolver: yupResolver(schema) });
 
+  const dispatch = useAppDispatch();
+
   const onSubmit = async (data: LoginFormData) => {
-    const result = await login(data);
-    if (login.fulfilled.match(result)) {
+    const result = await dispatch(loginAction(data));
+    if (loginAction.fulfilled.match(result)) {
       toast.success('Welcome back!');
       navigate('/dashboard');
     } else {
