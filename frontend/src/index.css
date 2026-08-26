@@ -1,0 +1,132 @@
+/* src/index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Base reset & tokens ────────────────────────────────── */
+@layer base {
+  :root {
+    --sidebar-width: 260px;
+    --topbar-height: 64px;
+    --transition: 0.2s ease;
+  }
+
+  html {
+    @apply h-full scroll-smooth;
+  }
+
+  body {
+    @apply h-full bg-surface-900 text-slate-100 font-sans antialiased;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  }
+
+  /* Dark-mode default — toggle with .dark class on <html> */
+  .dark body {
+    @apply bg-surface-950 text-slate-100;
+  }
+
+  /* Scrollbar styling */
+  ::-webkit-scrollbar        { @apply w-1.5 h-1.5; }
+  ::-webkit-scrollbar-track  { @apply bg-transparent; }
+  ::-webkit-scrollbar-thumb  { @apply bg-slate-600 rounded-full; }
+  ::-webkit-scrollbar-thumb:hover { @apply bg-slate-500; }
+
+  /* Focus ring */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-aria-500 ring-offset-2 ring-offset-surface-900;
+  }
+}
+
+/* ── Reusable component classes ─────────────────────────── */
+@layer components {
+
+  /* Glass card */
+  .glass {
+    @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl shadow-glass;
+  }
+  .glass-sm {
+    @apply bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl;
+  }
+
+  /* Severity badge */
+  .badge {
+    @apply inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full
+           text-xs font-semibold border tracking-wide uppercase;
+  }
+
+  /* Status dot */
+  .status-dot {
+    @apply w-2 h-2 rounded-full inline-block;
+  }
+  .status-dot.pulse {
+    @apply animate-pulse;
+  }
+
+  /* Stat card */
+  .stat-card {
+    @apply glass p-5 flex flex-col gap-2 hover:bg-white/8 transition-colors;
+  }
+
+  /* Sidebar link */
+  .nav-link {
+    @apply flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium
+           text-slate-400 hover:text-white hover:bg-white/8
+           transition-all duration-150 cursor-pointer;
+  }
+  .nav-link.active {
+    @apply text-white bg-aria-600/30 border border-aria-500/30;
+  }
+
+  /* Primary button */
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-4 py-2 bg-aria-600 hover:bg-aria-500
+           text-white rounded-xl text-sm font-semibold
+           transition-colors shadow-glow-red/20
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  /* Secondary button */
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 px-4 py-2
+           bg-white/8 hover:bg-white/12 border border-white/10
+           text-slate-300 hover:text-white
+           rounded-xl text-sm font-semibold transition-colors;
+  }
+
+  /* Input */
+  .input {
+    @apply w-full bg-surface-800 border border-white/10 rounded-xl
+           px-3 py-2.5 text-sm text-slate-100 placeholder-slate-500
+           focus:ring-2 focus:ring-aria-500 focus:border-aria-500
+           outline-none transition;
+  }
+
+  /* Table */
+  .table-row {
+    @apply border-b border-white/5 hover:bg-white/4 transition-colors;
+  }
+  .th {
+    @apply px-4 py-3 text-left text-xs font-semibold text-slate-400
+           uppercase tracking-wider;
+  }
+  .td {
+    @apply px-4 py-3 text-sm text-slate-300;
+  }
+}
+
+/* ── Leaflet overrides ───────────────────────────────────── */
+.leaflet-container {
+  @apply rounded-2xl;
+  background: theme('colors.surface.900') !important;
+}
+.leaflet-control-attribution {
+  @apply !bg-surface-800/80 !text-slate-500 text-2xs;
+}
+
+/* ── Recharts overrides ──────────────────────────────────── */
+.recharts-tooltip-wrapper .recharts-default-tooltip {
+  @apply !bg-surface-800 !border-white/10 !rounded-xl !shadow-card;
+}
+.recharts-legend-item-text {
+  @apply !text-slate-400 text-xs;
+}
