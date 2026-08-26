@@ -31,7 +31,7 @@ const LoginPage: React.FC = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<LoginFormData>({ resolver: yupResolver(schema) });
+  } = useForm({ resolver: yupResolver(schema) });
 
   const dispatch = useAppDispatch();
 

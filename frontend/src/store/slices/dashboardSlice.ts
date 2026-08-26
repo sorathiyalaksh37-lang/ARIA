@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import { dashboardApi } from '../../api/dashboard';
-import { DashboardStats, ActiveIncident, ResourceStatus, Hotspot, AnalyticsData, AgentStatus } from '../../types';
+import { DashboardStats, ResourceStatus, Hotspot, AnalyticsData, AgentStatus } from '../../types';
 
 interface DashboardState {
   stats: DashboardStats | null;

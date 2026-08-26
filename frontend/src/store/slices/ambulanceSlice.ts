@@ -48,17 +48,23 @@ const ambulanceSlice = createSlice({
       state.currentAmbulance = action.payload;
     },
     updateAmbulanceOptimistically(state, action: PayloadAction<AmbulanceUpdate>) {
+      const { current_incident_id, ...rest } = action.payload;
+      const cleanPayload = {
+        ...rest,
+        ...(current_incident_id !== undefined ? { current_incident_id: current_incident_id || undefined } : {})
+      };
+
       const index = state.ambulances.findIndex(a => a.id === action.payload.id);
       if (index !== -1) {
         state.ambulances[index] = {
           ...state.ambulances[index],
-          ...action.payload,
+          ...cleanPayload,
         };
       }
       if (state.currentAmbulance?.id === action.payload.id) {
         state.currentAmbulance = {
           ...state.currentAmbulance,
-          ...action.payload,
+          ...cleanPayload,
         };
       }
     },

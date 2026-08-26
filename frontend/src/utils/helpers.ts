@@ -14,33 +14,33 @@ export const timeAgo = (iso: string) =>
 
 export const SEVERITY_COLORS: Record<IncidentSeverity, string> = {
   [IncidentSeverity.CRITICAL]: 'text-red-400   bg-red-900/30   border-red-700',
-  [IncidentSeverity.HIGH]:     'text-orange-400 bg-orange-900/30 border-orange-700',
-  [IncidentSeverity.MEDIUM]:   'text-yellow-400 bg-yellow-900/30 border-yellow-700',
+  [IncidentSeverity.MODERATE]:   'text-yellow-400 bg-yellow-900/30 border-yellow-700',
   [IncidentSeverity.LOW]:      'text-green-400  bg-green-900/30  border-green-700',
 };
 
 export const SEVERITY_DOT: Record<IncidentSeverity, string> = {
   [IncidentSeverity.CRITICAL]: 'bg-red-500',
-  [IncidentSeverity.HIGH]:     'bg-orange-500',
-  [IncidentSeverity.MEDIUM]:   'bg-yellow-500',
+  [IncidentSeverity.MODERATE]:   'bg-yellow-500',
   [IncidentSeverity.LOW]:      'bg-green-500',
 };
 
 export const INCIDENT_STATUS_COLORS: Record<IncidentStatus, string> = {
-  [IncidentStatus.REPORTED]:   'text-gray-400  bg-gray-800',
+  [IncidentStatus.PENDING]: 'text-gray-400  bg-gray-800',
+  [IncidentStatus.PROCESSING]: 'text-amber-400 bg-amber-900/30',
+  [IncidentStatus.AWAITING_APPROVAL]: 'text-orange-400 bg-orange-900/30',
+  [IncidentStatus.APPROVED]: 'text-green-400 bg-green-900/30',
+  [IncidentStatus.REJECTED]: 'text-red-400 bg-red-900/30',
   [IncidentStatus.DISPATCHED]: 'text-blue-400  bg-blue-900/30',
-  [IncidentStatus.RESPONDING]: 'text-amber-400 bg-amber-900/30',
-  [IncidentStatus.RESOLVED]:   'text-green-400 bg-green-900/30',
-  [IncidentStatus.CLOSED]:     'text-slate-400 bg-slate-800',
+  [IncidentStatus.COMPLETED]: 'text-emerald-400 bg-emerald-900/30',
+  [IncidentStatus.CANCELLED]: 'text-slate-400 bg-slate-800',
 };
 
 export const AMBULANCE_STATUS_COLORS: Record<AmbulanceStatus, string> = {
   [AmbulanceStatus.AVAILABLE]:    'text-green-400  bg-green-900/30',
-  [AmbulanceStatus.DISPATCHED]:   'text-blue-400   bg-blue-900/30',
-  [AmbulanceStatus.RESPONDING]:   'text-amber-400  bg-amber-900/30',
-  [AmbulanceStatus.AT_SCENE]:     'text-purple-400 bg-purple-900/30',
+  [AmbulanceStatus.EN_ROUTE]:     'text-blue-400   bg-blue-900/30',
+  [AmbulanceStatus.ON_SCENE]:     'text-purple-400 bg-purple-900/30',
   [AmbulanceStatus.TRANSPORTING]: 'text-cyan-400   bg-cyan-900/30',
-  [AmbulanceStatus.MAINTENANCE]:  'text-yellow-400 bg-yellow-900/30',
+  [AmbulanceStatus.AT_HOSPITAL]:  'text-yellow-400 bg-yellow-900/30',
   [AmbulanceStatus.OFFLINE]:      'text-red-400    bg-red-900/30',
 };
 

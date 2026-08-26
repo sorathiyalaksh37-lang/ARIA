@@ -1,6 +1,6 @@
 // src/store/slices/authSlice.ts
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
-import { authApi } from '../../api/auth.api';
+import { authApi } from '../../api/auth';
 import { LS_KEYS } from '../../utils/constants';
 import { User, LoginFormData } from '../../types';
 
