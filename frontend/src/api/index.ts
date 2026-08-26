@@ -1,8 +1,7 @@
-// src/api/index.ts  — Re-exports all API services for clean imports
-export { authApi }      from './auth.api';
-export { incidentsApi } from './incidents.api';
-// Future services (add as backend endpoints are implemented):
-// export { ambulancesApi } from './ambulances.api';
-// export { hospitalsApi }  from './hospitals.api';
-// export { dashboardApi }  from './dashboard.api';
-// export { bloodBanksApi } from './bloodBanks.api';
+export { default as apiClient } from './client';
+export { authApi } from './auth';
+export { incidentsApi } from './incidents';
+export { hospitalsApi } from './hospitals';
+export { ambulancesApi } from './ambulances';
+export { bloodBanksApi } from './bloodBanks';
+export { dashboardApi } from './dashboard';

@@ -1,61 +1,43 @@
-// src/hooks/useWebSocket.ts
-import { useEffect, useRef, useCallback } from 'react';
-import { io, Socket } from 'socket.io-client';
-import { WS_URL } from '../utils/constants';
-import { LS_KEYS } from '../utils/constants';
-import { WSMessage, WSEventType } from '../types';
+import { useEffect, useCallback } from 'react';
+import { useAppDispatch, useAppSelector } from '../store';
+import { wsService } from '../api/websocket';
+import { WebSocketEvent } from '../types';
+import { connect, disconnect, addEvent } from '../store/slices/websocketSlice';
 
-type Handler<T = unknown> = (data: T) => void;
-
-export const useWebSocket = (
-  channels: string[] = ['dashboard', 'incidents', 'ambulances'],
-  enabled = true
-) => {
-  const socketRef = useRef<Socket | null>(null);
-  const handlersRef = useRef<Map<WSEventType, Handler>>(new Map());
-
-  const on = useCallback(<T>(event: WSEventType, handler: Handler<T>) => {
-    handlersRef.current.set(event, handler as Handler);
-  }, []);
-
-  const off = useCallback((event: WSEventType) => {
-    handlersRef.current.delete(event);
-  }, []);
-
-  const emit = useCallback((event: string, data?: unknown) => {
-    socketRef.current?.emit(event, data);
-  }, []);
+export const useWebSocket = () => {
+  const dispatch = useAppDispatch();
+  const { isConnected, lastMessage, events } = useAppSelector((state) => state.websocket);
+  const isAuthenticated = useAppSelector((state) => state.auth.isAuthenticated);
 
   useEffect(() => {
-    if (!enabled) return;
+    if (isAuthenticated) {
+      wsService.connect();
+      dispatch(connect());
 
-    const token = localStorage.getItem(LS_KEYS.ACCESS_TOKEN);
-    if (!token) return;
+      // Global event listener to store in Redux
+      const unsubscribeHandlers: (() => void)[] = [];
+      Object.values(WebSocketEvent).forEach((event) => {
+        const unsubscribe = wsService.subscribe(event, (data) => {
+          dispatch(addEvent({ event, data, timestamp: new Date().toISOString() }));
+        });
+        unsubscribeHandlers.push(unsubscribe);
+      });
 
-    const socket = io(WS_URL, {
-      query: { token, channels: channels.join(',') },
-      transports: ['websocket'],
-      reconnectionAttempts: 5,
-      reconnectionDelay: 2000,
-    });
+      return () => {
+        unsubscribeHandlers.forEach((unsub) => unsub());
+        wsService.disconnect();
+        dispatch(disconnect());
+      };
+    }
+  }, [isAuthenticated, dispatch]);
 
-    socketRef.current = socket;
+  const subscribe = useCallback((event: WebSocketEvent, handler: (data: any) => void) => {
+    return wsService.subscribe(event, handler);
+  }, []);
 
-    socket.onAny((event: WSEventType, message: WSMessage) => {
-      const handler = handlersRef.current.get(event);
-      if (handler) handler(message.data);
-    });
+  const emit = useCallback((event: string, data: any) => {
+    wsService.emit(event, data);
+  }, []);
 
-    socket.on('connect_error', (err) => {
-      console.error('[WS] Connection error:', err.message);
-    });
-
-    return () => {
-      socket.disconnect();
-      socketRef.current = null;
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [enabled, channels.join(',')]);
-
-  return { on, off, emit, socket: socketRef };
+  return { isConnected, lastMessage, events, subscribe, emit };
 };
