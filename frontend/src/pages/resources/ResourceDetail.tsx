@@ -54,7 +54,7 @@ const ResourceDetail: React.FC = () => {
             </div>
             <div>
               <h1 className="text-2xl font-bold text-white">{getTitle()}</h1>
-              <p className="text-slate-400 text-sm mt-1 uppercase tracking-wider">{type.replace('-', ' ')}</p>
+              <p className="text-slate-400 text-sm mt-1 uppercase tracking-wider">{type ? type.replace('-', ' ') : 'RESOURCE'}</p>
             </div>
           </div>
         </div>
