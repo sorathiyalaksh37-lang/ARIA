@@ -1,4 +1,9 @@
-import { Incident, IncidentSeverity, IncidentStatus } from '../types';
+import { 
+  Incident, IncidentSeverity, IncidentStatus,
+  Ambulance, AmbulanceStatus, AmbulanceType,
+  Hospital,
+  BloodBank, BloodType
+} from '../types';
 
 export const mockIncidents: Incident[] = [
   {
@@ -111,5 +116,142 @@ export const mockIncidents: Incident[] = [
     reported_at: new Date(Date.now() - 1000 * 60 * 2).toISOString(),
     updated_at: new Date().toISOString(),
     created_by: 'user_1',
+  }
+];
+
+export const mockHospitals: Hospital[] = [
+  {
+    id: 'HOSP-SFG',
+    name: 'SF General Hospital',
+    address: '1001 Potrero Ave, San Francisco',
+    location: { lat: 37.7554, lng: -122.4053 },
+    phone: '555-0100',
+    specialties: ['Trauma Center Level I', 'Burn Center', 'Cardiac'],
+    is_active: true,
+    availability: {
+      total_beds: 400,
+      available_beds: 45,
+      icu_beds: 50,
+      available_icu_beds: 5,
+      emergency_capacity: 85,
+      last_updated: new Date().toISOString()
+    }
+  },
+  {
+    id: 'HOSP-UCSF',
+    name: 'UCSF Medical Center',
+    address: '505 Parnassus Ave, San Francisco',
+    location: { lat: 37.7631, lng: -122.4586 },
+    phone: '555-0200',
+    specialties: ['Pediatrics', 'Neurology', 'Organ Transplant'],
+    is_active: true,
+    availability: {
+      total_beds: 600,
+      available_beds: 120,
+      icu_beds: 80,
+      available_icu_beds: 15,
+      emergency_capacity: 60,
+      last_updated: new Date().toISOString()
+    }
+  },
+  {
+    id: 'HOSP-KAI',
+    name: 'Kaiser Permanente SF',
+    address: '2425 Geary Blvd, San Francisco',
+    location: { lat: 37.7828, lng: -122.4439 },
+    phone: '555-0300',
+    specialties: ['General Surgery', 'Obstetrics', 'Orthopedics'],
+    is_active: true,
+    availability: {
+      total_beds: 250,
+      available_beds: 10,
+      icu_beds: 30,
+      available_icu_beds: 2,
+      emergency_capacity: 95, // high utilization
+      last_updated: new Date().toISOString()
+    }
+  }
+];
+
+export const mockAmbulances: Ambulance[] = [
+  {
+    id: 'AMB-102',
+    unit_number: '102',
+    type: AmbulanceType.ADVANCED_LIFE_SUPPORT,
+    status: AmbulanceStatus.EN_ROUTE,
+    location: { lat: 37.7699, lng: -122.4144 },
+    crew_count: 2,
+    current_incident_id: '1',
+    last_updated: new Date().toISOString(),
+    fuel_level_pct: 75
+  },
+  {
+    id: 'AMB-105',
+    unit_number: '105',
+    type: AmbulanceType.BASIC,
+    status: AmbulanceStatus.AVAILABLE,
+    location: { lat: 37.7949, lng: -122.4094 },
+    crew_count: 2,
+    last_updated: new Date().toISOString(),
+    fuel_level_pct: 90
+  },
+  {
+    id: 'AMB-201',
+    unit_number: '201',
+    type: AmbulanceType.CRITICAL_CARE,
+    status: AmbulanceStatus.AVAILABLE,
+    location: { lat: 37.7849, lng: -122.4394 },
+    crew_count: 3,
+    last_updated: new Date().toISOString(),
+    fuel_level_pct: 45
+  },
+  {
+    id: 'AMB-303',
+    unit_number: '303',
+    type: AmbulanceType.BASIC,
+    status: AmbulanceStatus.TRANSPORTING,
+    location: { lat: 37.7519, lng: -122.4224 },
+    crew_count: 2,
+    last_updated: new Date().toISOString(),
+    fuel_level_pct: 60
+  }
+];
+
+export const mockBloodBanks: BloodBank[] = [
+  {
+    id: 'BB-001',
+    name: 'SF Community Blood Center',
+    address: '270 Masonic Ave, San Francisco',
+    location: { lat: 37.7788, lng: -122.4468 },
+    phone: '555-0400',
+    last_updated: new Date().toISOString(),
+    inventory: {
+      [BloodType.A_POS]: 150,
+      [BloodType.A_NEG]: 45,
+      [BloodType.B_POS]: 85,
+      [BloodType.B_NEG]: 20,
+      [BloodType.O_POS]: 220,
+      [BloodType.O_NEG]: 30, // Critical
+      [BloodType.AB_POS]: 40,
+      [BloodType.AB_NEG]: 10
+    }
+  },
+  {
+    id: 'BB-002',
+    name: 'Red Cross Regional Center',
+    address: '1663 Market St, San Francisco',
+    location: { lat: 37.7725, lng: -122.4217 },
+    phone: '555-0500',
+    last_updated: new Date().toISOString(),
+    inventory: {
+      [BloodType.A_POS]: 300,
+      [BloodType.A_NEG]: 90,
+      [BloodType.B_POS]: 120,
+      [BloodType.B_NEG]: 35,
+      [BloodType.O_POS]: 400,
+      [BloodType.O_NEG]: 80,
+      [BloodType.AB_POS]: 60,
+      [BloodType.AB_NEG]: 25
+    }
   }
 ];
