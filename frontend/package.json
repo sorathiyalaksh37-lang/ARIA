@@ -17,6 +17,7 @@
     "axios": "^1.7.9",
     "date-fns": "^3.6.0",
     "leaflet": "^1.9.4",
+    "leaflet.heat": "^0.2.0",
     "lucide-react": "^0.468.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -35,6 +36,7 @@
   },
   "devDependencies": {
     "@hookform/resolvers": "^3.9.1",
+    "@types/leaflet.heat": "^0.2.5",
     "@types/react-leaflet": "^3.0.0",
     "autoprefixer": "^10.4.20",
     "eslint": "^8.57.1",
