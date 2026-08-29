@@ -1,22 +1,21 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Building2, Search, Filter } from 'lucide-react';
-import { HospitalCard } from '../../components/resources/HospitalCard';
-import { mockHospitals } from '../../utils/mockData';
+import { Droplet, Search } from 'lucide-react';
+import { BloodBankCard } from '../../components/resources/BloodBankCard';
+import { mockBloodBanks } from '../../utils/mockData';
 
-const HospitalsPage: React.FC = () => {
+const BloodBankList: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
-  
-  const filteredHospitals = mockHospitals.filter(h => 
-    h.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
-    h.address.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    h.specialties.some(s => s.toLowerCase().includes(searchQuery.toLowerCase()))
+
+  const filteredBloodBanks = mockBloodBanks.filter(bb => 
+    bb.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+    bb.address.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   return (
     <>
       <Helmet>
-        <title>Hospitals — ARIA</title>
+        <title>Blood Banks — ARIA</title>
       </Helmet>
       
       <div className="p-6 max-w-7xl mx-auto flex flex-col gap-6">
@@ -24,12 +23,12 @@ const HospitalsPage: React.FC = () => {
         {/* Header */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
           <div className="flex items-center gap-3">
-            <div className="p-2 bg-primary-500/10 rounded-lg">
-              <Building2 className="w-6 h-6 text-primary-400" />
+            <div className="p-2 bg-red-500/10 rounded-lg">
+              <Droplet className="w-6 h-6 text-red-500" />
             </div>
             <div>
-              <h1 className="text-2xl font-bold text-white">Hospital Network</h1>
-              <p className="text-slate-400 text-sm">Monitor hospital capacity and bed availability</p>
+              <h1 className="text-2xl font-bold text-white">Blood Bank Inventory</h1>
+              <p className="text-slate-400 text-sm">Monitor regional blood supply levels</p>
             </div>
           </div>
         </div>
@@ -42,29 +41,22 @@ const HospitalsPage: React.FC = () => {
             </div>
             <input
               type="text"
-              placeholder="Search hospitals by name, location, or specialty..."
+              placeholder="Search blood banks by name or location..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="input-field pl-10 w-full bg-surface-950 border-surface-800 text-white rounded-lg py-2 focus:border-primary-500 focus:ring-1 focus:ring-primary-500"
             />
           </div>
-          
-          <div className="flex gap-3">
-            <button className="flex items-center gap-2 px-4 py-2 bg-surface-950 border border-surface-800 rounded-lg text-slate-300 hover:text-white transition-colors">
-              <Filter className="w-4 h-4" />
-              Advanced Filters
-            </button>
-          </div>
         </div>
 
         {/* Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredHospitals.map(hospital => (
-            <HospitalCard key={hospital.id} hospital={hospital} />
+          {filteredBloodBanks.map(bb => (
+            <BloodBankCard key={bb.id} bloodBank={bb} />
           ))}
-          {filteredHospitals.length === 0 && (
+          {filteredBloodBanks.length === 0 && (
             <div className="col-span-full py-12 text-center text-slate-500">
-              No hospitals found matching your criteria.
+              No blood banks found matching your criteria.
             </div>
           )}
         </div>
@@ -74,4 +66,4 @@ const HospitalsPage: React.FC = () => {
   );
 };
 
-export default HospitalsPage;
+export default BloodBankList;
