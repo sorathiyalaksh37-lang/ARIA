@@ -255,3 +255,38 @@ export const mockBloodBanks: BloodBank[] = [
     }
   }
 ];
+
+import { User, UserRole } from '../types/user';
+
+export const mockUsers: User[] = [
+  {
+    id: 'user_1',
+    username: 'admin_sarah',
+    email: 'sarah.j@aria.local',
+    full_name: 'Sarah Jenkins',
+    role: UserRole.ADMIN,
+    is_active: true,
+    created_at: new Date('2025-01-15').toISOString(),
+    last_login: new Date().toISOString(),
+  },
+  {
+    id: 'user_2',
+    username: 'coord_mike',
+    email: 'm.chen@aria.local',
+    full_name: 'Michael Chen',
+    role: UserRole.COORDINATOR,
+    is_active: true,
+    created_at: new Date('2025-02-10').toISOString(),
+    last_login: new Date(Date.now() - 1000 * 60 * 60 * 2).toISOString(),
+  },
+  {
+    id: 'user_3',
+    username: 'hosp_sfg',
+    email: 'dispatch@sfg.hospital',
+    full_name: 'SFG Dispatch',
+    role: UserRole.HOSPITAL,
+    is_active: true,
+    created_at: new Date('2025-03-01').toISOString(),
+    last_login: new Date(Date.now() - 1000 * 60 * 60 * 24).toISOString(),
+  }
+];
