@@ -30,6 +30,9 @@ const ResourceDetail = lazy(() => import('../pages/resources/ResourceDetail'));
 // Analytics
 const Analytics = lazy(() => import('../pages/analytics/Analytics'));
 
+// Resource Allocation
+const ResourceAllocation = lazy(() => import('../pages/ResourceAllocation'));
+
 // Admin
 const UserManagement = lazy(() => import('../pages/admin/UserManagement'));
 const SystemConfig = lazy(() => import('../pages/admin/SystemConfig'));
@@ -83,6 +86,16 @@ export const AppRoutes: React.FC = () => {
           element={
             <ProtectedRoute allowedRoles={[UserRole.ADMIN, UserRole.COORDINATOR]}>
               <Analytics />
+            </ProtectedRoute>
+          } 
+        />
+
+        {/* Resource Allocation - ML-powered optimization */}
+        <Route 
+          path="resource-allocation" 
+          element={
+            <ProtectedRoute allowedRoles={[UserRole.ADMIN, UserRole.COORDINATOR]}>
+              <ResourceAllocation />
             </ProtectedRoute>
           } 
         />
