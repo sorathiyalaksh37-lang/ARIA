@@ -47,8 +47,25 @@ class Settings(BaseSettings):
     RATE_LIMIT_PER_MINUTE: int = 60
     RATE_LIMIT_PER_HOUR: int = 1000
     
-    # OpenAI
+    # OpenAI (LLM, Whisper, Vision)
     OPENAI_API_KEY: Optional[str] = None
+    OPENAI_MODEL: str = "gpt-4-turbo-preview"
+    
+    # Google Maps API
+    GOOGLE_MAPS_API_KEY: Optional[str] = None
+    
+    # Twilio SMS
+    TWILIO_ACCOUNT_SID: Optional[str] = None
+    TWILIO_AUTH_TOKEN: Optional[str] = None
+    TWILIO_PHONE_NUMBER: Optional[str] = None
+    
+    # SendGrid Email
+    SENDGRID_API_KEY: Optional[str] = None
+    SENDGRID_FROM_EMAIL: str = "noreply@aria-emergency.com"
+    SENDGRID_FROM_NAME: str = "ARIA Emergency Response"
+    
+    # OpenWeatherMap
+    OPENWEATHER_API_KEY: Optional[str] = None
     
     # ML Models
     MODEL_PATH: str = "../models"
@@ -61,10 +78,6 @@ class Settings(BaseSettings):
     # Monitoring
     ENABLE_METRICS: bool = True
     METRICS_PORT: int = 9090
-    
-    # External APIs
-    GOOGLE_MAPS_API_KEY: Optional[str] = None
-    WEATHER_API_KEY: Optional[str] = None
     
     class Config:
         env_file = ".env"
