@@ -1,0 +1,24 @@
+# Testing Dependencies for ARIA Platform
+
+# Core Testing
+pytest==7.4.3
+pytest-asyncio==0.21.1
+pytest-cov==4.1.0
+pytest-mock==3.12.0
+
+# HTTP Testing
+httpx==0.25.2
+requests==2.31.0
+
+# WebSocket Testing
+python-socketio[asyncio]==5.10.0
+websockets==12.0
+
+# External Service Testing
+twilio==8.11.0
+openai==1.6.1
+sendgrid==6.11.0
+
+# Utilities
+python-dotenv==1.0.0
+faker==21.0.0
