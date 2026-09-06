@@ -297,7 +297,7 @@ async def api_health():
 # ============================================================================
 
 # Import routers
-from app.api.v1 import incidents, auth, websocket, hospitals, ambulances, dashboard, resource_allocation
+from app.api.v1 import incidents, auth, websocket, hospitals, ambulances, dashboard, resource_allocation, bystander, mass_casualty, family, traffic, hospital_prep
 
 # Register API v1 routers
 app.include_router(auth.router, prefix="/api/v1", tags=["Authentication"])
@@ -307,6 +307,11 @@ app.include_router(ambulances.router, prefix="/api/v1", tags=["Ambulances"])
 app.include_router(dashboard.router, prefix="/api/v1", tags=["Dashboard"])
 app.include_router(websocket.router, prefix="/api/v1", tags=["WebSocket"])
 app.include_router(resource_allocation.router, prefix="/api/v1", tags=["Resource Allocation"])
+app.include_router(bystander.router, prefix="/api/v1", tags=["Bystander First Aid"])
+app.include_router(mass_casualty.router, prefix="/api/v1", tags=["Mass Casualty Mode"])
+app.include_router(family.router, prefix="/api/v1", tags=["Family Communication System"])
+app.include_router(traffic.router, prefix="/api/v1", tags=["Smart Traffic Light Integration"])
+app.include_router(hospital_prep.router, prefix="/api/v1", tags=["Hospital Preparation Checklist System"])
 
 # TODO: Additional routers
 # app.include_router(blood_banks.router, prefix="/api/v1/blood-banks", tags=["Blood Banks"])
