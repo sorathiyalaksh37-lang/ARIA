@@ -5,7 +5,7 @@ Maintains real-time incident dashboard state, timeline log, communication log, a
 
 import logging
 from typing import Dict, List, Optional, Any
-from datetime import datetime
+from datetime import datetime, timezone
 
 from app.services.mass_casualty.triage import triage_manager
 from app.services.mass_casualty.coordinator import mass_casualty_coordinator
@@ -19,7 +19,7 @@ class CommandCenterManager:
     def __init__(self):
         self._timeline_log: List[Dict[str, Any]] = [
             {
-                "timestamp": datetime.utcnow().isoformat(),
+                "timestamp": datetime.now(timezone.utc).isoformat(),
                 "event": "Mass Casualty Mode Activated",
                 "severity": "CRITICAL",
                 "author": "Incident Commander"
@@ -27,7 +27,7 @@ class CommandCenterManager:
         ]
         self._communication_log: List[Dict[str, Any]] = [
             {
-                "timestamp": datetime.utcnow().isoformat(),
+                "timestamp": datetime.now(timezone.utc).isoformat(),
                 "recipient": "All Regional Hospitals",
                 "type": "HOSPITAL_SURGE_ALERT",
                 "message": "Level 2 Mass Casualty Alert dispatched to 3 regional trauma centers."
@@ -37,7 +37,7 @@ class CommandCenterManager:
     def add_timeline_event(self, event: str, severity: str = "INFO", author: str = "Command Center") -> Dict[str, Any]:
         """Log a timeline event"""
         entry = {
-            "timestamp": datetime.utcnow().isoformat(),
+            "timestamp": datetime.now(timezone.utc).isoformat(),
             "event": event,
             "severity": severity,
             "author": author
@@ -48,7 +48,7 @@ class CommandCenterManager:
     def add_communication_log(self, recipient: str, comm_type: str, message: str) -> Dict[str, Any]:
         """Log a communication entry"""
         entry = {
-            "timestamp": datetime.utcnow().isoformat(),
+            "timestamp": datetime.now(timezone.utc).isoformat(),
             "recipient": recipient,
             "type": comm_type,
             "message": message
@@ -79,7 +79,7 @@ class CommandCenterManager:
         return {
             "mci_active": triage_manager.is_mci_active(),
             "incident_id": triage_summary.get("incident_id") or "MCI-INC-101",
-            "timestamp": datetime.utcnow().isoformat(),
+            "timestamp": datetime.now(timezone.utc).isoformat(),
             "triage_summary": triage_summary,
             "total_victims_tagged": len(victims),
             "victims_list": victims,

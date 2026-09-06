@@ -2,7 +2,7 @@
  * Centralized Error Handling Utility
  * Handles all types of errors with appropriate user feedback
  */
-import { toast } from 'react-toastify';
+import { toast } from 'react-hot-toast';
 import { AxiosError } from 'axios';
 
 // ============================================================================
@@ -179,16 +179,16 @@ class ErrorHandler {
         toast.error(message, { icon: '📡' });
         break;
       case ErrorType.AUTHENTICATION:
-        toast.warning(message, { icon: '🔐' });
+        toast(message, { icon: '🔐' });
         break;
       case ErrorType.AUTHORIZATION:
-        toast.warning(message, { icon: '⛔' });
+        toast(message, { icon: '⛔' });
         break;
       case ErrorType.VALIDATION:
-        toast.warning(message, { icon: '⚠️' });
+        toast(message, { icon: '⚠️' });
         break;
       case ErrorType.NOT_FOUND:
-        toast.info(message, { icon: '🔍' });
+        toast(message, { icon: '🔍' });
         break;
       case ErrorType.SERVER:
         toast.error(message, { icon: '🔥' });
@@ -203,7 +203,7 @@ class ErrorHandler {
    */
   handleValidationErrors(errors: Array<{ field: string; message: string }>): void {
     errors.forEach((error) => {
-      toast.warning(`${error.field}: ${error.message}`, { autoClose: 5000 });
+      toast(`${error.field}: ${error.message}`, { duration: 5000, icon: '⚠️' });
     });
   }
 

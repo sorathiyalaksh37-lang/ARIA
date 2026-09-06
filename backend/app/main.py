@@ -5,7 +5,7 @@ Main application with middleware, routing, and lifecycle management.
 import logging
 import sys
 from contextlib import asynccontextmanager
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import Dict
 
 from fastapi import FastAPI, Request, status
@@ -23,6 +23,11 @@ from prometheus_fastapi_instrumentator import Instrumentator
 from app.core.config import settings
 from app.core.database import init_db, close_db
 from app.schemas.response import ErrorResponse, ErrorDetail, HealthCheck
+
+import os
+
+if settings.LOG_FILE and os.path.dirname(settings.LOG_FILE):
+    os.makedirs(os.path.dirname(settings.LOG_FILE), exist_ok=True)
 
 # Setup logging
 logging.basicConfig(
@@ -144,48 +149,36 @@ app.add_middleware(GZipMiddleware, minimum_size=1000)
 if settings.ENVIRONMENT == "production":
     app.add_middleware(
         TrustedHostMiddleware,
-        allowed_hosts=["*.aria-emergency.com", "localhost"]
+        allowed_hosts=["*.aria-emergency.com", "localhost", "testserver"]
     )
 
 
-# Request ID Middleware
-@app.middleware("http")
-async def add_request_id(request: Request, call_next):
-    """Add unique request ID to each request."""
-    import uuid
-    request_id = str(uuid.uuid4())
-    request.state.request_id = request_id
-    
-    response = await call_next(request)
-    response.headers["X-Request-ID"] = request_id
-    
-    return response
-
-
-# Logging Middleware
+# Request Logging and ID Middleware
 @app.middleware("http")
 async def log_requests(request: Request, call_next):
-    """Log all requests and responses."""
-    start_time = datetime.utcnow()
+    """Log all requests and responses with unique request ID."""
+    import uuid
+    request_id = request.headers.get("X-Request-ID", str(uuid.uuid4()))
+    request.state.request_id = request_id
+    
+    start_time = datetime.now(timezone.utc)
     
     # Log request
     logger.info(
-        f"Request: {request.method} {request.url.path} "
-        f"[{request.state.request_id}]"
+        f"Request: {request.method} {request.url.path} [{request_id}]"
     )
     
     response = await call_next(request)
     
     # Calculate duration
-    duration = (datetime.utcnow() - start_time).total_seconds()
+    duration = (datetime.now(timezone.utc) - start_time).total_seconds()
     
     # Log response
     logger.info(
-        f"Response: {response.status_code} "
-        f"[{request.state.request_id}] "
-        f"Duration: {duration:.3f}s"
+        f"Response: {response.status_code} [{request_id}] Duration: {duration:.3f}s"
     )
     
+    response.headers["X-Request-ID"] = request_id
     return response
 
 
@@ -279,7 +272,7 @@ async def health_check():
     return HealthCheck(
         status="healthy",
         version=settings.APP_VERSION,
-        timestamp=datetime.utcnow().isoformat(),
+        timestamp=datetime.now(timezone.utc).isoformat(),
         database="connected",  # TODO: Check actual connection
         redis="connected",  # TODO: Check actual connection
         ml_models="loaded",  # TODO: Check actual status

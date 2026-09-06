@@ -114,7 +114,7 @@ class APITester {
   private async testIncidentEndpoints() {
     console.log('🚨 Testing Incident Endpoints...');
 
-    let incidentId: string;
+    let incidentId: string | undefined;
 
     // Create incident
     await this.test('POST /api/v1/incidents', async () => {

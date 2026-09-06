@@ -6,7 +6,7 @@ auto-activation detection (>10 victims), and triage officer management.
 
 import logging
 from typing import Dict, List, Optional, Any
-from datetime import datetime
+from datetime import datetime, timezone
 
 logger = logging.getLogger(__name__)
 
@@ -64,6 +64,7 @@ class TriageManager:
         logger.warning(f"🚨 MASS CASUALTY MODE ACTIVATED for incident {incident_id}. Reason: {reason}")
         return {
             "mci_active": True,
+            "mci_status": "ACTIVE",
             "incident_id": incident_id,
             "activation_timestamp": datetime.utcnow().isoformat(),
             "reason": reason,
@@ -76,11 +77,34 @@ class TriageManager:
         logger.info("Mass Casualty Mode deactivated. Returning to standard operations.")
         return {
             "mci_active": False,
+            "mci_status": "INACTIVE",
             "deactivation_timestamp": datetime.utcnow().isoformat()
         }
 
     def is_mci_active(self) -> bool:
         return self._mci_active
+
+    def classify_victim(
+        self,
+        can_walk: bool = False,
+        breathing_rate_bpm: Optional[int] = None,
+        has_radial_pulse: bool = True,
+        follows_simple_commands: bool = True,
+        **kwargs
+    ) -> str:
+        if "respirations_pm" in kwargs and breathing_rate_bpm is None:
+            breathing_rate_bpm = kwargs["respirations_pm"]
+        if "pulse_present" in kwargs:
+            has_radial_pulse = kwargs["pulse_present"]
+        if "can_follow_commands" in kwargs:
+            follows_simple_commands = kwargs["can_follow_commands"]
+
+        return self.evaluate_start_triage(
+            can_walk=can_walk,
+            breathing_rate_bpm=breathing_rate_bpm,
+            has_radial_pulse=has_radial_pulse,
+            follows_simple_commands=follows_simple_commands
+        )
 
     def evaluate_start_triage(
         self,
@@ -141,7 +165,7 @@ class TriageManager:
             "assigned_hospital_id": assigned_hospital_id,
             "assigned_ambulance_id": None,
             "transport_status": "WAITING_FOR_AMBULANCE",  # WAITING_FOR_AMBULANCE, IN_TRANSIT, DELIVERED
-            "triage_timestamp": datetime.utcnow().isoformat(),
+            "triage_timestamp": datetime.now(timezone.utc).isoformat(),
             "triage_officer": self._triage_officer
         }
 

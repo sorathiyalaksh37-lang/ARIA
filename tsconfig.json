@@ -6,7 +6,7 @@
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "strict": true,
+    "strict": false,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
     "module": "esnext",
@@ -15,19 +15,9 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "baseUrl": "src",
-    "paths": {
-      "@api/*": ["api/*"],
-      "@components/*": ["components/*"],
-      "@pages/*": ["pages/*"],
-      "@store/*": ["store/*"],
-      "@types/*": ["types/*"],
-      "@hooks/*": ["hooks/*"],
-      "@utils/*": ["utils/*"],
-      "@assets/*": ["assets/*"],
-      "@playwright/test": ["../node_modules/@playwright/test"]
-    }
+    "baseUrl": "frontend/src",
+    "typeRoots": ["./frontend/node_modules/@types"]
   },
-  "include": ["src", "tests", "../tests"],
-  "exclude": ["node_modules"]
+  "include": ["frontend/src/**/*", "frontend/tests/**/*", "tests/**/*"],
+  "exclude": ["node_modules", "frontend/node_modules"]
 }

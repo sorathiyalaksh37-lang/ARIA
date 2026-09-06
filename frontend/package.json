@@ -39,8 +39,8 @@
   },
   "devDependencies": {
     "@hookform/resolvers": "^3.9.1",
+    "@playwright/test": "^1.63.0",
     "@types/leaflet.heat": "^0.2.5",
-    "@types/react-leaflet": "^3.0.0",
     "autoprefixer": "^10.4.20",
     "eslint": "^8.57.1",
     "eslint-config-prettier": "^9.1.0",

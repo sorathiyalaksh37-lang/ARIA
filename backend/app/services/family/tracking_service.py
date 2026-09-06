@@ -6,7 +6,7 @@ live ETA calculations, hospital destination details, and doctor updates.
 
 import logging
 from typing import Dict, List, Optional, Any
-from datetime import datetime
+from datetime import datetime, timezone
 
 logger = logging.getLogger(__name__)
 
@@ -50,7 +50,7 @@ class FamilyTrackingService:
                 "triage_category": "YELLOW",
                 "attending_doctor": "Dr. Aris Thorne (Chief Trauma Surgeon)",
                 "doctor_notes": "Patient conscious, stable vitals. Prepared for CT scan upon arrival.",
-                "last_updated": datetime.utcnow().isoformat()
+                "last_updated": datetime.now(timezone.utc).isoformat()
             }
         }
 
@@ -104,7 +104,7 @@ class FamilyTrackingService:
         med = tracking["medical_summary"]
         med["attending_doctor"] = doctor_name
         med["doctor_notes"] = doctor_notes
-        med["last_updated"] = datetime.utcnow().isoformat()
+        med["last_updated"] = datetime.now(timezone.utc).isoformat()
         tracking["current_status"] = patient_status
 
         if room_number:

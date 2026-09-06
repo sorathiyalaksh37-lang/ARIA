@@ -6,7 +6,7 @@ communication preferences (SMS, Email, WhatsApp, Voice), languages, and privacy 
 
 import logging
 from typing import Dict, List, Optional, Any
-from datetime import datetime
+from datetime import datetime, timezone
 
 logger = logging.getLogger(__name__)
 
@@ -36,7 +36,7 @@ class FamilyContactService:
                 "language": "en",
                 "privacy_level": "FULL_MEDICAL",
                 "opt_in_notifications": True,
-                "created_at": datetime.utcnow().isoformat()
+                "created_at": datetime.now(timezone.utc).isoformat()
             },
             {
                 "contact_id": "CONT-102",
@@ -50,7 +50,7 @@ class FamilyContactService:
                 "language": "en",
                 "privacy_level": "EMERGENCY_ONLY",
                 "opt_in_notifications": True,
-                "created_at": datetime.utcnow().isoformat()
+                "created_at": datetime.now(timezone.utc).isoformat()
             }
         ]
 
@@ -88,7 +88,7 @@ class FamilyContactService:
             "language": language,
             "privacy_level": privacy_level.upper(),  # EMERGENCY_ONLY or FULL_MEDICAL
             "opt_in_notifications": True,
-            "created_at": datetime.utcnow().isoformat()
+            "created_at": datetime.now(timezone.utc).isoformat()
         }
 
         self._contacts_db[incident_id].append(record)

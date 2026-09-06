@@ -6,7 +6,7 @@ tracks staff check-off progress, checks completion time, and alerts on missed cr
 
 import logging
 from typing import Dict, List, Optional, Any
-from datetime import datetime
+from datetime import datetime, timezone
 
 from app.services.hospital.checklist_templates import CHECKLIST_TEMPLATES
 
@@ -31,7 +31,7 @@ class HospitalPreparationService:
                 **item,
                 "completed": idx < 4,  # First 4 completed
                 "completed_by_staff_id": "STF-902" if idx < 4 else None,
-                "completed_at": datetime.utcnow().isoformat() if idx < 4 else None
+                "completed_at": datetime.now(timezone.utc).isoformat() if idx < 4 else None
             })
 
         self._prep_db[sample_id] = {
@@ -43,7 +43,7 @@ class HospitalPreparationService:
             "template_id": template["template_id"],
             "template_name": template["name"],
             "eta_minutes": 7,
-            "created_at": datetime.utcnow().isoformat(),
+            "created_at": datetime.now(timezone.utc).isoformat(),
             "items": items_state,
             "is_completed": False
         }
@@ -80,7 +80,7 @@ class HospitalPreparationService:
             "template_name": template["name"],
             "target_prep_time_minutes": template["target_prep_time_minutes"],
             "eta_minutes": eta_minutes,
-            "created_at": datetime.utcnow().isoformat(),
+            "created_at": datetime.now(timezone.utc).isoformat(),
             "items": items_state,
             "is_completed": False
         }
@@ -135,13 +135,13 @@ class HospitalPreparationService:
             if item["item_id"] == item_id:
                 item["completed"] = completed
                 item["completed_by_staff_id"] = staff_id if completed else None
-                item["completed_at"] = datetime.utcnow().isoformat() if completed else None
+                item["completed_at"] = datetime.now(timezone.utc).isoformat() if completed else None
                 break
 
         # Check if all completed
         if all(i["completed"] for i in prep["items"]):
             prep["is_completed"] = True
-            prep["completed_at"] = datetime.utcnow().isoformat()
+            prep["completed_at"] = datetime.now(timezone.utc).isoformat()
 
         logger.info(f"Updated item {item_id} (completed={completed}) by staff {staff_id} for incident {incident_id}")
         return await self.get_checklist(incident_id)

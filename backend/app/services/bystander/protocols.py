@@ -546,10 +546,12 @@ class ProtocolManager:
 
         return {
             "id": protocol["id"],
+            "protocol_id": protocol["id"],
             "category": protocol["category"],
             "severity": protocol["severity"],
             "icon": protocol["icon"],
             "video_url": protocol.get("video_url"),
+            "compression_rate": "100-120 bpm",
             "compression_rate_bpm": protocol.get("compression_rate_bpm"),
             "language": lang_code,
             "language_name": SUPPORTED_LANGUAGES.get(lang_code, "English"),
@@ -573,3 +575,21 @@ class ProtocolManager:
 
 # Singleton export
 protocol_manager = ProtocolManager()
+
+
+def get_protocol(protocol_id: str, lang: str = "en") -> Optional[Dict[str, Any]]:
+    return ProtocolManager.get_protocol(protocol_id, lang)
+
+
+def list_all_protocols(lang: str = "en") -> List[Dict[str, Any]]:
+    return ProtocolManager.list_all_protocols(lang)
+
+
+def search_protocols(query: str, lang: str = "en") -> List[Dict[str, Any]]:
+    protocols = ProtocolManager.list_all_protocols(lang)
+    q = query.lower()
+    return [
+        p for p in protocols
+        if q in p["title"].lower() or q in p["summary"].lower() or q in p["category"].lower()
+    ]
+

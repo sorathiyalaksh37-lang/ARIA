@@ -34,9 +34,9 @@ class LocationQuery(BaseModel):
 class NearestAmbulancesRequest(BaseModel):
     """Request for nearest ambulances."""
     location: LocationQuery
-    ambulance_type: Optional[str] = Field(None, regex="^(BASIC|ALS|CRITICAL_CARE)$")
+    ambulance_type: Optional[str] = Field(None, pattern="^(BASIC|ALS|CRITICAL_CARE)$")
     max_distance_km: float = Field(default=30.0, ge=1, le=100)
-    severity: Optional[str] = Field(None, regex="^(LOW|MODERATE|CRITICAL)$")
+    severity: Optional[str] = Field(None, pattern="^(LOW|MODERATE|CRITICAL)$")
     top_k: int = Field(default=5, ge=1, le=20)
 
 
@@ -50,7 +50,7 @@ class UpdateLocationRequest(BaseModel):
 
 class UpdateStatusRequest(BaseModel):
     """Update ambulance status."""
-    status: str = Field(..., regex="^(AVAILABLE|EN_ROUTE|ON_SCENE|TRANSPORTING|AT_HOSPITAL|OFFLINE)$")
+    status: str = Field(..., pattern="^(AVAILABLE|EN_ROUTE|ON_SCENE|TRANSPORTING|AT_HOSPITAL|OFFLINE)$")
     incident_id: Optional[str] = None
     notes: Optional[str] = None
 
@@ -157,7 +157,7 @@ async def list_ambulances(
 
 @router.get("/available", response_model=StandardResponse)
 async def get_available_ambulances(
-    ambulance_type: Optional[str] = Query(None, regex="^(BASIC|ALS|CRITICAL_CARE)$"),
+    ambulance_type: Optional[str] = Query(None, pattern="^(BASIC|ALS|CRITICAL_CARE)$"),
     current_user: User = Depends(get_current_user),
     db: AsyncSession = Depends(get_db)
 ):

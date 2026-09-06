@@ -5,9 +5,9 @@ and generates Google Maps turn-by-turn navigation links.
 """
 
 import logging
-import numpy as np
+import math
 from typing import Dict, List, Optional, Any
-from datetime import datetime
+from datetime import datetime, timezone
 
 logger = logging.getLogger(__name__)
 
@@ -16,13 +16,13 @@ class BystanderLocationService:
     """Location service for CPR civilians, AEDs, pharmacies, and clinics."""
 
     def calculate_distance_km(self, lat1: float, lng1: float, lat2: float, lng2: float) -> float:
-        """Haversine distance formula in kilometers"""
+        """Haversine distance formula in kilometers using standard math module"""
         R = 6371.0
-        dlat = np.radians(lat2 - lat1)
-        dlng = np.radians(lng2 - lng1)
-        a = (np.sin(dlat / 2) ** 2 +
-             np.cos(np.radians(lat1)) * np.cos(np.radians(lat2)) * np.sin(dlng / 2) ** 2)
-        c = 2 * np.arctan2(np.sqrt(a), np.sqrt(1 - a))
+        dlat = math.radians(lat2 - lat1)
+        dlng = math.radians(lng2 - lng1)
+        a = (math.sin(dlat / 2) ** 2 +
+             math.cos(math.radians(lat1)) * math.cos(math.radians(lat2)) * math.sin(dlng / 2) ** 2)
+        c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
         return float(round(R * c, 2))
 
     def generate_google_maps_nav_url(
@@ -37,13 +37,20 @@ class BystanderLocationService:
 
     async def find_nearby_resources(
         self,
-        incident_lat: float,
-        incident_lng: float,
-        radius_km: float = 3.0
+        incident_lat: Optional[float] = None,
+        incident_lng: Optional[float] = None,
+        latitude: Optional[float] = None,
+        longitude: Optional[float] = None,
+        radius_km: float = 3.0,
+        **kwargs
     ) -> Dict[str, Any]:
         """
         Locate nearby CPR-certified civilians, AED defibrillators, pharmacies, and clinics.
         """
+        lat_val = incident_lat if incident_lat is not None else (latitude if latitude is not None else 0.0)
+        lng_val = incident_lng if incident_lng is not None else (longitude if longitude is not None else 0.0)
+        incident_lat = lat_val
+        incident_lng = lng_val
         try:
             # Synthetic / Simulated active emergency network data centered around incident lat/lng
             # 1. Nearby CPR Certified Civilians
@@ -130,19 +137,25 @@ class BystanderLocationService:
             return {
                 "incident_location": {"latitude": incident_lat, "longitude": incident_lng},
                 "search_radius_km": radius_km,
+                "cpr_certified_civilians": civilians,
                 "cpr_civilians": civilians,
+                "civilians": civilians,
                 "aed_locations": aeds,
+                "aeds": aeds,
                 "pharmacies": pharmacies,
                 "emergency_clinics": clinics,
-                "timestamp": datetime.utcnow().isoformat()
+                "timestamp": datetime.now(timezone.utc).isoformat()
             }
 
         except Exception as e:
             logger.error(f"Error finding nearby bystander resources: {str(e)}", exc_info=True)
             return {
                 "error": str(e),
+                "cpr_certified_civilians": [],
                 "cpr_civilians": [],
+                "civilians": [],
                 "aed_locations": [],
+                "aeds": [],
                 "pharmacies": [],
                 "emergency_clinics": []
             }
@@ -150,3 +163,22 @@ class BystanderLocationService:
 
 # Singleton export
 bystander_location_service = BystanderLocationService()
+
+
+async def find_nearby_resources(
+    incident_lat: Optional[float] = None,
+    incident_lng: Optional[float] = None,
+    latitude: Optional[float] = None,
+    longitude: Optional[float] = None,
+    radius_km: float = 3.0,
+    **kwargs
+) -> Dict[str, Any]:
+    return await bystander_location_service.find_nearby_resources(
+        incident_lat=incident_lat,
+        incident_lng=incident_lng,
+        latitude=latitude,
+        longitude=longitude,
+        radius_km=radius_km,
+        **kwargs
+    )
+

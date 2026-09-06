@@ -172,7 +172,7 @@ async def get_coverage_gaps(
 
 @router.get("/heatmap")
 async def get_resource_heatmap(
-    metric: str = Query("risk", regex="^(risk|demand|coverage|incidents)$", description="Heatmap visualization metric"),
+    metric: str = Query("risk", pattern="^(risk|demand|coverage|incidents)$", description="Heatmap visualization metric"),
     db: Session = Depends(get_db)
 ):
     """

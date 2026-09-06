@@ -52,7 +52,7 @@ class NearbyHospitalsRequest(BaseModel):
 class RankHospitalsRequest(BaseModel):
     """Request for ML-based hospital ranking."""
     incident_location: LocationQuery
-    severity: str = Field(..., regex="^(LOW|MODERATE|CRITICAL)$")
+    severity: str = Field(..., pattern="^(LOW|MODERATE|CRITICAL)$")
     incident_type: Optional[str] = None
     timestamp: Optional[str] = None
     top_k: int = Field(default=10, ge=1, le=50)

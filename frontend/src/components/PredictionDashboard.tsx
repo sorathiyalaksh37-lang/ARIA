@@ -19,7 +19,7 @@ import {
   Bloodtype as BloodIcon,
   AccessTime as TimeIcon,
   Speed as SpeedIcon,
-  AutoRenew as RefreshIcon
+  Autorenew as RefreshIcon
 } from '@mui/icons-material';
 
 export interface DemandForecastData {

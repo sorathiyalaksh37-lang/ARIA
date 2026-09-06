@@ -12,6 +12,18 @@ class ResponseBase(BaseModel):
     data: Optional[Any] = None
 
 
+class StandardResponse(ResponseBase):
+    """Standard API response model."""
+    pass
+
+
+class SuccessResponse(BaseModel):
+    """Success API response model."""
+    success: bool = True
+    message: str = "Success"
+    data: Optional[Any] = None
+
+
 class ErrorDetail(BaseModel):
     """Error detail model."""
     field: Optional[str] = None

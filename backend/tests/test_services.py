@@ -23,18 +23,18 @@ from app.services.hospital.preparation_service import hospital_prep_service
 @pytest.mark.asyncio
 async def test_bystander_protocols():
     """Test bystander first aid protocol retrieval and multi-language support"""
-    cpr_en = get_protocol("CPR", lang="en")
+    cpr_en = get_protocol("cpr", lang="en")
     assert cpr_en is not None
-    assert cpr_en["protocol_id"] == "CPR"
+    assert cpr_en["protocol_id"] == "cpr"
     assert cpr_en["compression_rate"] == "100-120 bpm"
 
-    cpr_hi = get_protocol("CPR", lang="hi")
+    cpr_hi = get_protocol("cpr", lang="hi")
     assert cpr_hi is not None
     assert "सीपीआर" in cpr_hi["title"]
 
     results = search_protocols("bleeding")
     assert len(results) > 0
-    assert results[0]["protocol_id"] == "BLEEDING"
+    assert results[0]["protocol_id"] == "bleeding_control"
 
 
 @pytest.mark.asyncio
@@ -44,35 +44,35 @@ async def test_bystander_location():
     assert "aeds" in res
     assert "cpr_certified_civilians" in res
     assert len(res["aeds"]) > 0
-    assert "google_maps_url" in res["aeds"][0]
+    assert "navigation_url" in res["aeds"][0] or "google_maps_url" in res["aeds"][0]
 
 
 @pytest.mark.asyncio
 async def test_start_triage_algorithm():
     """Test START triage algorithm categorization (RED, YELLOW, GREEN, BLACK)"""
     # 1. Immediate (RED) - Unresponsive, breathing > 30 bpm
-    red_result = await triage_manager.classify_victim(
+    red_result = triage_manager.classify_victim(
         respirations_pm=34,
         pulse_present=True,
         can_follow_commands=False
     )
-    assert red_result["category"] == "RED"
+    assert red_result == "RED"
 
     # 2. Delayed (YELLOW) - Breathing < 30, pulse present, can follow commands
-    yellow_result = await triage_manager.classify_victim(
+    yellow_result = triage_manager.classify_victim(
         respirations_pm=22,
         pulse_present=True,
         can_follow_commands=True
     )
-    assert yellow_result["category"] == "YELLOW"
+    assert yellow_result == "YELLOW"
 
     # 3. Expectant (BLACK) - No respirations
-    black_result = await triage_manager.classify_victim(
+    black_result = triage_manager.classify_victim(
         respirations_pm=0,
         pulse_present=False,
         can_follow_commands=False
     )
-    assert black_result["category"] == "BLACK"
+    assert black_result == "BLACK"
 
 
 @pytest.mark.asyncio

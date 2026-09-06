@@ -6,7 +6,7 @@ bystander scene confirmation, action logging, victim status tracking, and EMS au
 
 import logging
 from typing import Dict, List, Optional, Any
-from datetime import datetime
+from datetime import datetime, timezone
 
 from app.services.bystander.protocols import protocol_manager
 from app.services.bystander.location import bystander_location_service
@@ -80,7 +80,8 @@ class BystanderService:
             }
         }
 
-        session_id = f"BS-{incident_id}-{datetime.utcnow().strftime('%M%S')}"
+        now_utc = datetime.now(timezone.utc)
+        session_id = f"BS-{incident_id}-{now_utc.strftime('%M%S')}"
         session_data = {
             "session_id": session_id,
             "incident_id": incident_id,
@@ -92,7 +93,7 @@ class BystanderService:
             "actions_logged": [],
             "victim_status": "UNASSESSED",
             "escalated_to_ems": False,
-            "created_at": datetime.utcnow().isoformat()
+            "created_at": now_utc.isoformat()
         }
 
         self._active_sessions[session_id] = session_data
@@ -133,13 +134,13 @@ class BystanderService:
         else:
             session["arrival_confirmed"] = True
             session["status"] = "ARRIVED_ON_SCENE"
-            session["arrived_at"] = datetime.utcnow().isoformat()
+            session["arrived_at"] = datetime.now(timezone.utc).isoformat()
 
         return {
             "session_id": session_id,
             "arrival_confirmed": True,
             "message": "Bystander arrival confirmed at scene. First aid instructions active.",
-            "timestamp": datetime.utcnow().isoformat()
+            "timestamp": datetime.now(timezone.utc).isoformat()
         }
 
     async def confirm_action_performed(
@@ -157,7 +158,7 @@ class BystanderService:
         action_entry = {
             "action": action_step,
             "notes": notes,
-            "timestamp": datetime.utcnow().isoformat()
+            "timestamp": datetime.now(timezone.utc).isoformat()
         }
         session["actions_logged"].append(action_entry)
 
@@ -181,7 +182,7 @@ class BystanderService:
             self._active_sessions[session_id] = session
 
         session["victim_status"] = victim_status.upper()
-        session["last_status_update"] = datetime.utcnow().isoformat()
+        session["last_status_update"] = datetime.now(timezone.utc).isoformat()
 
         auto_escalated = False
         if victim_status.upper() in ["UNRESPONSIVE", "DETERIORATING", "CRITICAL"]:
@@ -207,7 +208,7 @@ class BystanderService:
             "session_id": session_id,
             "escalation_status": "EMS_DISPATCH_PRIORITY_ALERT_DISPATCHED",
             "reason": reason,
-            "timestamp": datetime.utcnow().isoformat()
+            "timestamp": datetime.now(timezone.utc).isoformat()
         }
 
 

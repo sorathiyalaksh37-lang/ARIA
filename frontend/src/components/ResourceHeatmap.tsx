@@ -56,6 +56,7 @@ export interface HospitalAlert {
   current_available_beds: number;
   projected_24h_admissions: number;
   projected_available_beds: number;
+  projected_utilization_rate?: number;
   alert_level: string;
   recommended_action: string;
 }

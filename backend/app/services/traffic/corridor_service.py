@@ -6,7 +6,7 @@ minimizes red light stops, and provides manual coordinator override.
 
 import logging
 from typing import Dict, List, Optional, Any
-from datetime import datetime
+from datetime import datetime, timezone
 
 from app.services.traffic.traffic_service import city_traffic_service
 
@@ -54,7 +54,7 @@ class GreenCorridorService:
             },
             "time_saved_minutes": time_saved_minutes,
             "percentage_time_saved": percentage_saved,
-            "calculation_timestamp": datetime.utcnow().isoformat()
+            "calculation_timestamp": datetime.now(timezone.utc).isoformat()
         }
 
     async def create_green_corridor(
@@ -72,8 +72,9 @@ class GreenCorridorService:
 
         savings = await self.calculate_time_savings(distance_km=7.8, normal_light_stops=len(nodes))
 
+        now_utc = datetime.now(timezone.utc)
         self._active_corridor = {
-            "corridor_id": f"GC-{ambulance_id}-{datetime.utcnow().strftime('%M%S')}",
+            "corridor_id": f"GC-{ambulance_id}-{now_utc.strftime('%M%S')}",
             "ambulance_id": ambulance_id,
             "incident_id": incident_id,
             "status": "ACTIVE",
@@ -82,7 +83,7 @@ class GreenCorridorService:
             "destination_hospital_id": destination_hospital_id,
             "preempted_nodes": nodes,
             "time_savings": savings,
-            "activated_at": datetime.utcnow().isoformat()
+            "activated_at": now_utc.isoformat()
         }
 
         logger.info(f"Green Corridor activated for ambulance {ambulance_id}: {savings['time_saved_minutes']} mins saved")
@@ -100,7 +101,7 @@ class GreenCorridorService:
         return {
             "manual_override_active": enable_override,
             "message": "Manual override enabled. All traffic signals along route forced GREEN.",
-            "timestamp": datetime.utcnow().isoformat()
+            "timestamp": datetime.now(timezone.utc).isoformat()
         }
 
     async def get_corridor_status(self) -> Dict[str, Any]:

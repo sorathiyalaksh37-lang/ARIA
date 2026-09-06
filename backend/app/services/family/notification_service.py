@@ -5,7 +5,7 @@ Dispatches automatic milestone updates to family contacts via SMS, Email, WhatsA
 
 import logging
 from typing import Dict, List, Optional, Any
-from datetime import datetime
+from datetime import datetime, timezone
 
 from app.services.family.contact_service import family_contact_service
 
@@ -67,7 +67,7 @@ class FamilyNotificationService:
                 "channel": "WHATSAPP",
                 "status": "DELIVERED",
                 "summary": "🚨 Emergency alert dispatched with live tracking link.",
-                "timestamp": datetime.utcnow().isoformat()
+                "timestamp": datetime.now(timezone.utc).isoformat()
             },
             {
                 "notification_id": "NOTIF-102",
@@ -78,7 +78,7 @@ class FamilyNotificationService:
                 "channel": "WHATSAPP",
                 "status": "DELIVERED",
                 "summary": "🚑 Paramedics arrived on scene at 19:05.",
-                "timestamp": datetime.utcnow().isoformat()
+                "timestamp": datetime.now(timezone.utc).isoformat()
             }
         ]
 
@@ -164,7 +164,7 @@ class FamilyNotificationService:
                     "whatsapp": whatsapp_payload if channel == "WHATSAPP" else None,
                     "voice": voice_script if channel == "VOICE" else None
                 },
-                "timestamp": datetime.utcnow().isoformat()
+                "timestamp": datetime.now(timezone.utc).isoformat()
             }
 
             if incident_id not in self._history_db:

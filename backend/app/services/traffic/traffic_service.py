@@ -6,7 +6,7 @@ query traffic light node states, and handle fallback modes when API integration 
 
 import logging
 from typing import Dict, List, Optional, Any
-from datetime import datetime
+from datetime import datetime, timezone
 
 logger = logging.getLogger(__name__)
 
@@ -57,7 +57,7 @@ class CityTrafficService:
             "city_api_connected": self._api_connected,
             "system_name": "Metro Adaptive Traffic Control System (ATCS v4.2)",
             "latched_signal_nodes_count": len(self._signal_nodes),
-            "timestamp": datetime.utcnow().isoformat()
+            "timestamp": datetime.now(timezone.utc).isoformat()
         }
 
     async def get_signal_nodes(self, route_id: Optional[str] = None) -> List[Dict[str, Any]]:
@@ -79,7 +79,7 @@ class CityTrafficService:
         return {
             "preempted_signal_count": preempted_count,
             "status": "SUCCESS",
-            "timestamp": datetime.utcnow().isoformat()
+            "timestamp": datetime.now(timezone.utc).isoformat()
         }
 
     async def trigger_fallback(self) -> Dict[str, Any]:
