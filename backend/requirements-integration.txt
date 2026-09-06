@@ -1,0 +1,25 @@
+# Additional requirements for full integration
+# Install with: pip install -r requirements-integration.txt
+
+# Google Maps Integration
+googlemaps==4.10.0
+
+# OpenAI (GPT-4, Whisper, Vision)
+openai==1.12.0
+
+# Twilio SMS
+twilio==8.12.0
+
+# SendGrid Email
+sendgrid==6.11.0
+
+# HTTP Client for OSRM and Nominatim
+httpx==0.27.0
+
+# Polyline encoding/decoding
+polyline==2.0.2
+
+# Additional utilities
+python-multipart==0.0.9  # For file uploads
+pillow==10.2.0  # Image processing
+python-magic==0.4.27  # File type detection
