@@ -13,7 +13,7 @@ from app.core.database import get_db
 from app.core.security import get_current_user
 from app.models.hospital import Hospital
 from app.models.user import User
-from app.schemas.response import StandardResponse, PaginatedResponse
+from app.schemas.response import ResponseBase, PaginatedResponse
 from app.services.ml_service import get_ml_service, MLService
 from pydantic import BaseModel, Field
 import logging
@@ -52,7 +52,7 @@ class NearbyHospitalsRequest(BaseModel):
 class RankHospitalsRequest(BaseModel):
     """Request for ML-based hospital ranking."""
     incident_location: LocationQuery
-    severity: str = Field(..., regex="^(LOW|MODERATE|CRITICAL)$")
+    severity: str = Field(..., pattern="^(LOW|MODERATE|CRITICAL)$")
     incident_type: Optional[str] = None
     timestamp: Optional[str] = None
     top_k: int = Field(default=10, ge=1, le=50)

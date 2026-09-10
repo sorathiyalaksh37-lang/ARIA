@@ -98,7 +98,7 @@ async def get_current_active_user(current_user: Dict = Depends(get_current_user)
     return current_user
 
 
-async def require_role(required_role: str):
+def require_role(required_role: str):
     """Dependency to require specific role."""
     async def role_checker(current_user: Dict = Depends(get_current_active_user)):
         user_role = current_user.get("role")

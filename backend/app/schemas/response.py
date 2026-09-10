@@ -26,6 +26,13 @@ class ErrorResponse(BaseModel):
     errors: Optional[List[ErrorDetail]] = None
     
     
+class StandardResponse(BaseModel):
+    """Standard response model."""
+    success: bool = True
+    message: str = "Success"
+    data: Optional[Any] = None
+
+
 class PaginatedResponse(BaseModel):
     """Paginated response model."""
     success: bool = True
