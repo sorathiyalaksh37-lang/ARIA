@@ -5,8 +5,15 @@ Finds and ranks suitable hospitals
 from typing import List
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select, func
-from geoalchemy2.functions import ST_Distance, ST_DWithin
-from geoalchemy2.elements import WKTElement
+# GeoAlchemy2 disabled for dev - using Haversine math for distance queries
+import math
+def _haversine_km(lat1, lon1, lat2, lon2):
+    R = 6371
+    phi1, phi2 = math.radians(lat1), math.radians(lat2)
+    dphi = math.radians(lat2 - lat1)
+    dlambda = math.radians(lon2 - lon1)
+    a = math.sin(dphi/2)**2 + math.cos(phi1)*math.cos(phi2)*math.sin(dlambda/2)**2
+    return R * 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
 
 from app.agents.base_agent import BaseAgent
 from app.agents.state import AgentState, HospitalInfo, Location, IncidentSeverity

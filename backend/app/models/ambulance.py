@@ -5,7 +5,7 @@ from datetime import datetime
 from sqlalchemy import Column, String, Integer, Float, DateTime, Boolean, ForeignKey, Enum as SQLEnum, JSON
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import relationship
-from geoalchemy2 import Geometry
+# geoalchemy2 disabled for dev (PostGIS not available) - using lat/lng Float columns instead
 import uuid
 import enum
 
@@ -49,14 +49,14 @@ class Ambulance(Base):
     has_oxygen = Column(Boolean, default=True)
     
     # Location (real-time)
-    current_location = Column(Geometry('POINT', srid=4326))
+    # current_location = Column(Geometry('POINT', srid=4326))  # PostGIS - disabled for dev
     latitude = Column(Float)
     longitude = Column(Float)
     last_location_update = Column(DateTime)
     
     # Base station
     base_station = Column(String(255))
-    base_location = Column(Geometry('POINT', srid=4326))
+    # base_location = Column(Geometry('POINT', srid=4326))  # PostGIS - disabled for dev
     base_city = Column(String(100), index=True)
     
     # Status

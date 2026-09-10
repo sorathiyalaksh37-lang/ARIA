@@ -168,10 +168,13 @@ async def log_requests(request: Request, call_next):
     """Log all requests and responses."""
     start_time = datetime.utcnow()
     
+    # Safely get request_id (set by add_request_id middleware)
+    request_id = getattr(request.state, "request_id", "unknown")
+    
     # Log request
     logger.info(
         f"Request: {request.method} {request.url.path} "
-        f"[{request.state.request_id}]"
+        f"[{request_id}]"
     )
     
     response = await call_next(request)
@@ -182,7 +185,7 @@ async def log_requests(request: Request, call_next):
     # Log response
     logger.info(
         f"Response: {response.status_code} "
-        f"[{request.state.request_id}] "
+        f"[{getattr(request.state, 'request_id', 'unknown')}] "
         f"Duration: {duration:.3f}s"
     )
     

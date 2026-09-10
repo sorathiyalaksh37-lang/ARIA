@@ -5,7 +5,7 @@ from datetime import datetime
 from sqlalchemy import Column, String, Integer, Float, DateTime, Boolean, JSON, Text
 from sqlalchemy.dialects.postgresql import UUID, ARRAY
 from sqlalchemy.orm import relationship
-from geoalchemy2 import Geometry
+# geoalchemy2 disabled for dev (PostGIS not available) - using lat/lng Float columns instead
 import uuid
 
 from app.core.database import Base
@@ -21,7 +21,7 @@ class Hospital(Base):
     hospital_code = Column(String(50), unique=True, index=True)
     
     # Location
-    location = Column(Geometry('POINT', srid=4326), nullable=False)
+    # location = Column(Geometry('POINT', srid=4326), nullable=False)  # PostGIS - disabled for dev
     latitude = Column(Float, nullable=False)
     longitude = Column(Float, nullable=False)
     address = Column(Text)

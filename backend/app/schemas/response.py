@@ -12,6 +12,7 @@ class ResponseBase(BaseModel):
     data: Optional[Any] = None
 
 StandardResponse = ResponseBase
+SuccessResponse = ResponseBase
 
 class ErrorDetail(BaseModel):
     """Error detail model."""

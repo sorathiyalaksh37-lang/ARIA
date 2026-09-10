@@ -85,12 +85,7 @@ async def create_incident(
             created_by=UUID(current_user["sub"]),
         )
         
-        # Set PostGIS location
-        from geoalchemy2.elements import WKTElement
-        incident.location = WKTElement(
-            f'POINT({incident_data.location.longitude} {incident_data.location.latitude})',
-            srid=4326
-        )
+        # PostGIS location disabled for dev - lat/lng stored in latitude/longitude columns
         
         db.add(incident)
         await db.flush()
