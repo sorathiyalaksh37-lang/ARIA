@@ -11,6 +11,8 @@ class ResponseBase(BaseModel):
     message: str
     data: Optional[Any] = None
 
+StandardResponse = ResponseBase
+SuccessResponse = ResponseBase
 
 class StandardResponse(ResponseBase):
     """Standard API response model."""
@@ -38,6 +40,13 @@ class ErrorResponse(BaseModel):
     errors: Optional[List[ErrorDetail]] = None
     
     
+class StandardResponse(BaseModel):
+    """Standard response model."""
+    success: bool = True
+    message: str = "Success"
+    data: Optional[Any] = None
+
+
 class PaginatedResponse(BaseModel):
     """Paginated response model."""
     success: bool = True

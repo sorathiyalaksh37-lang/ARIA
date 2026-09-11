@@ -163,6 +163,9 @@ async def log_requests(request: Request, call_next):
     
     start_time = datetime.now(timezone.utc)
     
+    # Safely get request_id (set by add_request_id middleware)
+    request_id = getattr(request.state, "request_id", "unknown")
+    
     # Log request
     logger.info(
         f"Request: {request.method} {request.url.path} [{request_id}]"

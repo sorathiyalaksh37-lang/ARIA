@@ -5,7 +5,7 @@ from datetime import datetime
 from sqlalchemy import Column, String, Integer, Float, DateTime, Text, Boolean, ForeignKey, Enum as SQLEnum, JSON
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import relationship
-from geoalchemy2 import Geometry
+# geoalchemy2 disabled for dev (PostGIS not available) - using lat/lng Float columns instead
 import uuid
 import enum
 
@@ -54,7 +54,7 @@ class Incident(Base):
     incident_code = Column(String(50), unique=True, index=True, nullable=False)
     
     # Location
-    location = Column(Geometry('POINT', srid=4326), nullable=False)
+    # location = Column(Geometry('POINT', srid=4326), nullable=False)  # PostGIS - disabled for dev
     latitude = Column(Float, nullable=False)
     longitude = Column(Float, nullable=False)
     address = Column(String(500))
